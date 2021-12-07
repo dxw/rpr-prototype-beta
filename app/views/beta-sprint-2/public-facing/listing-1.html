@@ -1,0 +1,717 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Search for a regulated profession
+{% endblock %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Search for a regulated profession
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="rpr-listing__filters-container">
+        <form action="listing-2" method="post" class="form">
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {{ govukInput({
+            label: {
+              text: "Profession that you are looking for",
+              classes: "govuk-label--s",
+              isPageHeading: true
+            },
+            classes: "govuk-input--width-10",
+            hint: {
+              text: "For example, technology"
+            },
+            id: "profession-keyword",
+            name: "profession-keyword"
+          }) }}
+
+          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+          {{ govukCheckboxes({
+            idPrefix: "nations",
+            name: "nations",
+            classes: "govuk-checkboxes--small",
+            fieldset: {
+              legend: {
+                text: "Nations",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select all that apply."
+            },
+            items: [
+              {
+                value: "england",
+                text: "England"
+              },
+              {
+                value: "scotland",
+                text: "Scotland"
+              },
+              {
+                value: "wales",
+                text: "Wales"
+              },
+              {
+                value: "northern-ireland",
+                text: "Northern Ireland"
+              }
+            ]
+          }) }}
+
+          {{ govukCheckboxes({
+            idPrefix: "industries",
+            name: "industries",
+            classes: "govuk-checkboxes--small",
+            fieldset: {
+              legend: {
+                text: "Industry / sector",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select all that apply."
+            },
+            items: [
+              {
+                value: "construction-engineering",
+                text: "Construction & Engineering"
+              },
+              {
+                value: "education",
+                text: "Education"
+              },
+              {
+                value: "finance",
+                text: "Finance"
+              },
+              {
+                value: "health",
+                text: "Health"
+              },
+              {
+                value: "law",
+                text: "Law"
+              },
+              {
+                value: "shipping",
+                text: "Shipping"
+              },
+              {
+                value: "other",
+                text: "Other"
+              },
+              {
+                value: "security",
+                text: "Security"
+              },
+              {
+                value: "transport",
+                text: "Transport"
+              },
+              {
+                value: "energy",
+                text: "Energy"
+              },
+              {
+                value: "science",
+                text: "Science"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Filter results"
+          }) }}
+        </form>
+
+      </div>
+
+      <div class="govuk-!-padding-bottom-9"></div>
+
+    </div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">221</span> professions found.</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-1-plastic-surgery">Plastic surgery</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-2-registered-gas-engineer">Registered Gas Engineer</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "Capita Gas Registration and Ancillary Services Ltd"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Construction & Engineering"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "ATT - Attestation of competence , Art. 11 a"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-3-nuclear-medicine">Nuclear Medicine</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Paediatric surgery</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Chartered builder</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "Capita Gas Registration and Ancillary Services Ltd"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Construction & Engineering"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "ATT - Attestation of competence , Art. 11 a"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Clinical pharmacology and therapeutics</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Dermatology</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Chartered building services engineer</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "Capita Gas Registration and Ancillary Services Ltd"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Construction & Engineering"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "ATT - Attestation of competence , Art. 11 a"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Occupational medicine</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Clinical radiology</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Mines electrical engineer</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "Capita Gas Registration and Ancillary Services Ltd"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Construction & Engineering"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "ATT - Attestation of competence , Art. 11 a"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Pharmacy technician</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+    </div>
+
+  </div>
+
+{% endblock %}
