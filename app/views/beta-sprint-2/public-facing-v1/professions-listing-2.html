@@ -1,0 +1,339 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Search for a regulated profession
+{% endblock %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Search for a regulated profession
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="rpr-listing__filters-container">
+        <form action="professions-listing-2" method="post" class="form">
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {{ govukInput({
+            label: {
+              text: "Profession that you are looking for",
+              classes: "govuk-label--s",
+              isPageHeading: true
+            },
+            classes: "govuk-input--width-10",
+            hint: {
+              text: "For example, technology"
+            },
+            id: "profession-keyword",
+            name: "profession-keyword",
+            value: data['profession-keyword']
+          }) }}
+
+          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+          {{ govukCheckboxes({
+            idPrefix: "nations",
+            name: "nations",
+            classes: "govuk-checkboxes--small rpr-listing__filter",
+            fieldset: {
+              legend: {
+                text: "Nations",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select all that apply."
+            },
+            items: [
+              {
+                value: "england",
+                text: "England",
+                checked: checked("nations", "england")
+              },
+              {
+                value: "scotland",
+                text: "Scotland",
+                checked: checked("nations", "scotland")
+              },
+              {
+                value: "wales",
+                text: "Wales",
+                checked: checked("nations", "wales")
+              },
+              {
+                value: "northern-ireland",
+                text: "Northern Ireland",
+                checked: checked("nations", "northern-ireland")
+              }
+            ]
+          }) }}
+
+          {{ govukCheckboxes({
+            idPrefix: "industries",
+            name: "industries",
+            classes: "govuk-checkboxes--small rpr-listing__filter",
+            fieldset: {
+              legend: {
+                text: "Industry / sector",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select all that apply."
+            },
+            items: [
+              {
+                value: "construction-engineering",
+                text: "Construction & Engineering",
+                checked: checked("industries", "construction-engineering")
+              },
+              {
+                value: "education",
+                text: "Education",
+                checked: checked("industries", "education")
+              },
+              {
+                value: "finance",
+                text: "Finance",
+                checked: checked("industries", "finance")
+              },
+              {
+                value: "health",
+                text: "Health",
+                checked: checked("industries", "health")
+              },
+              {
+                value: "law",
+                text: "Law",
+                checked: checked("industries", "law")
+              },
+              {
+                value: "shipping",
+                text: "Shipping",
+                checked: checked("industries", "shipping")
+              },
+              {
+                value: "other",
+                text: "Other",
+                checked: checked("industries", "other")
+              },
+              {
+                value: "security",
+                text: "Security",
+                checked: checked("industries", "security")
+              },
+              {
+                value: "transport",
+                text: "Transport",
+                checked: checked("industries", "transport")
+              },
+              {
+                value: "energy",
+                text: "Energy",
+                checked: checked("industries", "energy")
+              },
+              {
+                value: "science",
+                text: "Science",
+                checked: checked("industries", "science")
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Filter results"
+          }) }}
+        </form>
+
+      </div>
+
+      <div class="govuk-!-padding-bottom-9"></div>
+
+    </div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['profession-keyword'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['profession-keyword'] }}</strong></p>
+      {% endif %}
+
+      {% if data['nations'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Nations:</span> 
+        {% for nation in data['nations'] %}
+          <strong class="govuk-tag">{{ nation }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      {% if data['industries'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries:</span> 
+        {% for industry in data['industries'] %}
+          <strong class="govuk-tag">{{ industry }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">3</span> professions found.</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-1-plastic-surgery">Plastic surgery</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-2-registered-gas-engineer">Registered Gas Engineer</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "Capita Gas Registration and Ancillary Services Ltd"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Construction & Engineering"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "ATT - Attestation of competence , Art. 11 a"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__profession-container">
+        <h2>
+          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-3-nuclear-medicine">Nuclear Medicine</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Regulated authority"
+              },
+              value: {
+                text: "General Medical Council"
+              }
+            },
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                text: "All regions"
+              }
+            },
+            {
+              key: {
+                text: "Industry / sector"
+              },
+              value: {
+                text: "Health"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+    </div>
+
+  </div>
+
+{% endblock %}

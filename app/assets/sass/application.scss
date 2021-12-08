@@ -32,16 +32,20 @@ $govuk-assets-path: '/govuk/assets/';
   margin-bottom: 5px;
 }
 
-.rpr-listing__profession-title:link {
+.rpr-listing__profession-title:link,
+.rpr-listing__ra-title:link {
   text-decoration: none;
 }
 
-.rpr-listing__profession-title:hover {
+.rpr-listing__profession-title:hover,
+.rpr-listing__ra-title:hover {
   text-decoration: underline;
 }
 
 .rpr-listing__profession-summary-list dt, 
-.rpr-listing__profession-summary-list dd {
+.rpr-listing__profession-summary-list dd,
+.rpr-listing__ra-summary-list dt, 
+.rpr-listing__ra-summary-list dd {
   padding: 2px 0;
 }
 

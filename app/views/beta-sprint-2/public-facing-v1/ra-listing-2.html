@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Search for a regulated profession
+  Find a regulatory authority
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,7 +18,7 @@
 {% block content %}
 
   <h1 class="govuk-heading-xl">
-    Search for a regulated profession
+    Find a regulatory authority
   </h1>
 
   <div class="govuk-grid-row">
@@ -26,12 +26,12 @@
     <div class="govuk-grid-column-one-third">
 
       <div class="rpr-listing__filters-container">
-        <form action="listing-2" method="post" class="form">
+        <form action="ra-listing-2" method="post" class="form">
           {% from "govuk/components/input/macro.njk" import govukInput %}
 
           {{ govukInput({
             label: {
-              text: "Profession that you are looking for",
+              text: "Authority that you are looking for",
               classes: "govuk-label--s",
               isPageHeading: true
             },
@@ -39,9 +39,9 @@
             hint: {
               text: "For example, technology"
             },
-            id: "profession-keyword",
-            name: "profession-keyword",
-            value: data['profession-keyword']
+            id: "ra-keyword",
+            name: "ra-keyword",
+            value: data['ra-keyword']
           }) }}
 
           {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
@@ -171,8 +171,8 @@
 
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data['profession-keyword'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['profession-keyword'] }}</strong></p>
+      {% if data['ra-keyword'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['ra-keyword'] }}</strong></p>
       {% endif %}
 
       {% if data['nations'] %}
@@ -190,148 +190,26 @@
         {% endfor %}
         </p>
       {% endif %}
-
-      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">3</span> professions found.</p>
+      
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">2</span> authorities found.</p>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-      <div class="rpr-listing__profession-container">
+      <div class="rpr-listing__ra-container">
         <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-1-plastic-surgery">Plastic surgery</a>
+          <a class="govuk-link govuk-heading-l rpr-listing__ra-title" href="ra-1-general-medical-council">General Medical Council</a>
         </h2>
-
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
-          rows: [
-            {
-              key: {
-                text: "Regulated authority"
-              },
-              value: {
-                text: "General Medical Council"
-              }
-            },
-            {
-              key: {
-                text: "Nations"
-              },
-              value: {
-                text: "All regions"
-              }
-            },
-            {
-              key: {
-                text: "Industry / sector"
-              },
-              value: {
-                text: "Health"
-              }
-            },
-            {
-              key: {
-                text: "Qualification level"
-              },
-              value: {
-                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
-              }
-            }
-          ]
-        }) }}
       </div>
-  
+
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <div class="rpr-listing__profession-container">
+      <div class="rpr-listing__ra-container">
         <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-2-registered-gas-engineer">Registered Gas Engineer</a>
+          <a class="govuk-link govuk-heading-l rpr-listing__ra-title" href="ra-2-capita-gas-registration">Capita Gas Registration and Ancillary Services Ltd</a>
         </h2>
-
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
-          rows: [
-            {
-              key: {
-                text: "Regulated authority"
-              },
-              value: {
-                text: "Capita Gas Registration and Ancillary Services Ltd"
-              }
-            },
-            {
-              key: {
-                text: "Nations"
-              },
-              value: {
-                text: "All regions"
-              }
-            },
-            {
-              key: {
-                text: "Industry / sector"
-              },
-              value: {
-                text: "Construction & Engineering"
-              }
-            },
-            {
-              key: {
-                text: "Qualification level"
-              },
-              value: {
-                text: "ATT - Attestation of competence , Art. 11 a"
-              }
-            }
-          ]
-        }) }}
       </div>
-  
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <div class="rpr-listing__profession-container">
-        <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-3-nuclear-medicine">Nuclear Medicine</a>
-        </h2>
-
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border rpr-list__profession-summary-list',
-          rows: [
-            {
-              key: {
-                text: "Regulated authority"
-              },
-              value: {
-                text: "General Medical Council"
-              }
-            },
-            {
-              key: {
-                text: "Nations"
-              },
-              value: {
-                text: "All regions"
-              }
-            },
-            {
-              key: {
-                text: "Industry / sector"
-              },
-              value: {
-                text: "Health"
-              }
-            },
-            {
-              key: {
-                text: "Qualification level"
-              },
-              value: {
-                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
-              }
-            }
-          ]
-        }) }}
-      </div>
-  
     </div>
 
   </div>
