@@ -49,7 +49,7 @@
           {{ govukCheckboxes({
             idPrefix: "nations",
             name: "nations",
-            classes: "govuk-checkboxes--small",
+            classes: "govuk-checkboxes--small rpr-listing__filter",
             fieldset: {
               legend: {
                 text: "Nations",
@@ -63,19 +63,23 @@
             items: [
               {
                 value: "england",
-                text: "England"
+                text: "England",
+                checked: checked("nations", "england")
               },
               {
                 value: "scotland",
-                text: "Scotland"
+                text: "Scotland",
+                checked: checked("nations", "scotland")
               },
               {
                 value: "wales",
-                text: "Wales"
+                text: "Wales",
+                checked: checked("nations", "wales")
               },
               {
                 value: "northern-ireland",
-                text: "Northern Ireland"
+                text: "Northern Ireland",
+                checked: checked("nations", "northern-ireland")
               }
             ]
           }) }}
@@ -83,7 +87,7 @@
           {{ govukCheckboxes({
             idPrefix: "industries",
             name: "industries",
-            classes: "govuk-checkboxes--small",
+            classes: "govuk-checkboxes--small rpr-listing__filter",
             fieldset: {
               legend: {
                 text: "Industry / sector",
@@ -97,47 +101,58 @@
             items: [
               {
                 value: "construction-engineering",
-                text: "Construction & Engineering"
+                text: "Construction & Engineering",
+                checked: checked("industries", "construction-engineering")
               },
               {
                 value: "education",
-                text: "Education"
+                text: "Education",
+                checked: checked("industries", "education")
               },
               {
                 value: "finance",
-                text: "Finance"
+                text: "Finance",
+                checked: checked("industries", "finance")
               },
               {
                 value: "health",
-                text: "Health"
+                text: "Health",
+                checked: checked("industries", "health")
               },
               {
                 value: "law",
-                text: "Law"
+                text: "Law",
+                checked: checked("industries", "law")
               },
               {
                 value: "shipping",
-                text: "Shipping"
+                text: "Shipping",
+                checked: checked("industries", "shipping")
               },
               {
                 value: "other",
-                text: "Other"
+                text: "Other",
+                checked: checked("industries", "other")
               },
               {
                 value: "security",
-                text: "Security"
+                text: "Security",
+                checked: checked("industries", "security")
               },
               {
                 value: "transport",
-                text: "Transport"
+                text: "Transport",
+                checked: checked("industries", "transport")
               },
               {
                 value: "energy",
-                text: "Energy"
+                text: "Energy",
+                checked: checked("industries", "energy")
               },
               {
                 value: "science",
-                text: "Science"
+                text: "Science",
+                checked: checked("industries", "science")
               }
             ]
           }) }}
@@ -156,7 +171,26 @@
 
     <div class="govuk-grid-column-two-thirds">
 
-      <p>Keywords: {{ data['profession-keyword'] }}</p>
+      {% if data['profession-keyword'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['profession-keyword'] }}</strong></p>
+      {% endif %}
+
+      {% if data['nations'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Nations:</span> 
+        {% for nation in data['nations'] %}
+          <strong class="govuk-tag">{{ nation }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      {% if data['industries'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries:</span> 
+        {% for industry in data['industries'] %}
+          <strong class="govuk-tag">{{ industry }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
       <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">3</span> professions found.</p>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">

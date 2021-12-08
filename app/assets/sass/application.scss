@@ -22,6 +22,16 @@ $govuk-assets-path: '/govuk/assets/';
   padding: 1rem;
 }
 
+.rpr-listing__filter {
+  background-color: govuk-colour("white");
+  height: 180px;
+  overflow-y: auto;
+}
+
+.rpr-listing__search-criteria-container {
+  margin-bottom: 5px;
+}
+
 .rpr-listing__profession-title:link {
   text-decoration: none;
 }
