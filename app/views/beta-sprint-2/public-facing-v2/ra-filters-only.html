@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Find a regulatory authority
+  Search for a regulatory authority
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,23 +18,24 @@
 {% block content %}
 
   <h1 class="govuk-heading-xl">
-    Find a regulatory authority
+    Search for a regulatory authority
   </h1>
 
   <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-one-third">
+    <div class="govuk-grid-column-two-thirds">
 
-      <div class="rpr-listing__filters-container">
-        <form action="ra-listing-2" method="post" class="form">
+      <div class="">
+        <form action="ra-listing-1" method="post" class="form">
+          {% from "govuk/components/input/macro.njk" import govukInput %}
 
           {{ govukInput({
             label: {
               text: "Authority that you are looking for",
-              classes: "govuk-label--s",
+              classes: "govuk-label--m",
               isPageHeading: true
             },
-            classes: "govuk-input--width-10",
+            classes: "",
             hint: {
               text: "For example, technology"
             },
@@ -43,15 +44,17 @@
             value: data['ra-keyword']
           }) }}
 
+          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
           {{ govukCheckboxes({
             idPrefix: "ra-nations",
             name: "ra-nations",
-            classes: "govuk-checkboxes--small rpr-listing__filter",
+            classes: "govuk-checkboxes",
             fieldset: {
               legend: {
                 text: "Nations",
                 isPageHeading: true,
-                classes: "govuk-fieldset__legend--s"
+                classes: "govuk-fieldset__legend--m"
               }
             },
             hint: {
@@ -84,12 +87,12 @@
           {{ govukCheckboxes({
             idPrefix: "ra-industries",
             name: "ra-industries",
-            classes: "govuk-checkboxes--small rpr-listing__filter",
+            classes: "govuk-checkboxes",
             fieldset: {
               legend: {
                 text: "Industry / sector",
                 isPageHeading: true,
-                classes: "govuk-fieldset__legend--s"
+                classes: "govuk-fieldset__legend--m"
               }
             },
             hint: {
@@ -155,58 +158,15 @@
           }) }}
 
           {{ govukButton({
-            text: "Filter results"
+            text: "Continue"
           }) }}
         </form>
 
       </div>
 
-      <div class="govuk-!-padding-bottom-9"></div>
-
     </div>
 
-
-    <div class="govuk-grid-column-two-thirds">
-
-      {% if data['ra-keyword'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['ra-keyword'] }}</strong></p>
-      {% endif %}
-
-      {% if data['ra-nations'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Nations:</span> 
-        {% for nation in data['ra-nations'] %}
-          <strong class="govuk-tag">{{ nation }}</strong>
-        {% endfor %}
-        </p>
-      {% endif %}
-
-      {% if data['ra-industries'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries:</span> 
-        {% for industry in data['ra-industries'] %}
-          <strong class="govuk-tag">{{ industry }}</strong>
-        {% endfor %}
-        </p>
-      {% endif %}
-      
-      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">2</span> authorities found.</p>
-
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-      <div class="rpr-listing__ra-container">
-        <h2>
-          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="ra-2-capita-gas-registration">Capita Gas Registration and Ancillary Services Ltd</a>
-        </h2>
-      </div>
-
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-      <div class="rpr-listing__ra-container">
-        <h2>
-          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="ra-1-general-medical-council">General Medical Council</a>
-        </h2>
-      </div>
-
-    </div>
+    <div class="govuk-grid-column-one-third"></div>
 
   </div>
 

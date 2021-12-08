@@ -47,7 +47,7 @@
           {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
           {{ govukCheckboxes({
-            idPrefix: "nations",
+            idPrefix: "profession-nations",
             name: "nations",
             classes: "govuk-checkboxes",
             fieldset: {
@@ -64,29 +64,29 @@
               {
                 value: "england",
                 text: "England",
-                checked: checked("nations", "england")
+                checked: checked("profession-nations", "england")
               },
               {
                 value: "scotland",
                 text: "Scotland",
-                checked: checked("nations", "scotland")
+                checked: checked("profession-nations", "scotland")
               },
               {
                 value: "wales",
                 text: "Wales",
-                checked: checked("nations", "wales")
+                checked: checked("profession-nations", "wales")
               },
               {
                 value: "northern-ireland",
                 text: "Northern Ireland",
-                checked: checked("nations", "northern-ireland")
+                checked: checked("profession-nations", "northern-ireland")
               }
             ]
           }) }}
 
           {{ govukCheckboxes({
-            idPrefix: "industries",
-            name: "industries",
+            idPrefix: "profession-industries",
+            name: "profession-industries",
             classes: "govuk-checkboxes",
             fieldset: {
               legend: {
@@ -102,57 +102,57 @@
               {
                 value: "construction-engineering",
                 text: "Construction & Engineering",
-                checked: checked("industries", "construction-engineering")
+                checked: checked("profession-industries", "construction-engineering")
               },
               {
                 value: "education",
                 text: "Education",
-                checked: checked("industries", "education")
+                checked: checked("profession-industries", "education")
               },
               {
                 value: "finance",
                 text: "Finance",
-                checked: checked("industries", "finance")
+                checked: checked("profession-industries", "finance")
               },
               {
                 value: "health",
                 text: "Health",
-                checked: checked("industries", "health")
+                checked: checked("profession-industries", "health")
               },
               {
                 value: "law",
                 text: "Law",
-                checked: checked("industries", "law")
+                checked: checked("profession-industries", "law")
               },
               {
                 value: "shipping",
                 text: "Shipping",
-                checked: checked("industries", "shipping")
+                checked: checked("profession-industries", "shipping")
               },
               {
                 value: "other",
                 text: "Other",
-                checked: checked("industries", "other")
+                checked: checked("profession-industries", "other")
               },
               {
                 value: "security",
                 text: "Security",
-                checked: checked("industries", "security")
+                checked: checked("profession-industries", "security")
               },
               {
                 value: "transport",
                 text: "Transport",
-                checked: checked("industries", "transport")
+                checked: checked("profession-industries", "transport")
               },
               {
                 value: "energy",
                 text: "Energy",
-                checked: checked("industries", "energy")
+                checked: checked("profession-industries", "energy")
               },
               {
                 value: "science",
                 text: "Science",
-                checked: checked("industries", "science")
+                checked: checked("profession-industries", "science")
               }
             ]
           }) }}
