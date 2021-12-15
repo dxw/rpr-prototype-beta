@@ -1,0 +1,293 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Find a regulatory authority
+{% endblock %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Find a regulatory authority
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="rpr-listing__filters-container">
+        <form action="ra-listing-2" method="post" class="form">
+
+          {{ govukInput({
+            label: {
+              text: "Authority that you are looking for",
+              classes: "govuk-label--s",
+              isPageHeading: true
+            },
+            classes: "govuk-input--width-10",
+            hint: {
+              text: "For example, technology"
+            },
+            id: "ra-keyword",
+            name: "ra-keyword",
+            value: data['ra-keyword']
+          }) }}
+
+          {{ govukCheckboxes({
+            idPrefix: "ra-nations",
+            name: "ra-nations",
+            classes: "govuk-checkboxes--small rpr-listing__filter",
+            fieldset: {
+              legend: {
+                text: "Nations",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select all that apply."
+            },
+            items: [
+              {
+                value: "england",
+                text: "England",
+                checked: checked("ra-nations", "england")
+              },
+              {
+                value: "scotland",
+                text: "Scotland",
+                checked: checked("ra-nations", "scotland")
+              },
+              {
+                value: "wales",
+                text: "Wales",
+                checked: checked("ra-nations", "wales")
+              },
+              {
+                value: "northern-ireland",
+                text: "Northern Ireland",
+                checked: checked("ra-nations", "northern-ireland")
+              }
+            ]
+          }) }}
+
+          {{ govukCheckboxes({
+            idPrefix: "ra-industries",
+            name: "ra-industries",
+            classes: "govuk-checkboxes--small rpr-listing__filter",
+            fieldset: {
+              legend: {
+                text: "Industry / sector",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select all that apply."
+            },
+            items: [
+              {
+                value: "construction-engineering",
+                text: "Construction & Engineering",
+                checked: checked("ra-industries", "construction-engineering")
+              },
+              {
+                value: "education",
+                text: "Education",
+                checked: checked("ra-industries", "education")
+              },
+              {
+                value: "finance",
+                text: "Finance",
+                checked: checked("ra-industries", "finance")
+              },
+              {
+                value: "health",
+                text: "Health",
+                checked: checked("ra-industries", "health")
+              },
+              {
+                value: "law",
+                text: "Law",
+                checked: checked("ra-industries", "law")
+              },
+              {
+                value: "shipping",
+                text: "Shipping",
+                checked: checked("ra-industries", "shipping")
+              },
+              {
+                value: "other",
+                text: "Other",
+                checked: checked("ra-industries", "other")
+              },
+              {
+                value: "security",
+                text: "Security",
+                checked: checked("ra-industries", "security")
+              },
+              {
+                value: "transport",
+                text: "Transport",
+                checked: checked("ra-industries", "transport")
+              },
+              {
+                value: "energy",
+                text: "Energy",
+                checked: checked("ra-industries", "energy")
+              },
+              {
+                value: "science",
+                text: "Science",
+                checked: checked("ra-industries", "science")
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Filter results"
+          }) }}
+        </form>
+
+      </div>
+
+      <div class="govuk-!-padding-bottom-9"></div>
+
+    </div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['ra-keyword'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['ra-keyword'] }}</strong></p>
+      {% endif %}
+
+      {% if data['ra-nations'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Nations:</span> 
+        {% for nation in data['ra-nations'] %}
+          <strong class="govuk-tag">{{ nation }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      {% if data['ra-industries'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries:</span> 
+        {% for industry in data['ra-industries'] %}
+          <strong class="govuk-tag">{{ industry }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+      
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">75</span> authorities found.</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="ra-2-capita-gas-registration">Capita Gas Registration and Ancillary Services Ltd</a>
+        </h2>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="ra-1-general-medical-council">General Medical Council</a>
+        </h2>
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Health and Care Professions Council</a>
+        </h2>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Highways England</a>
+        </h2>
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institute for Learning</a>
+        </h2>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institute of Chartered Accountants in England and Wales</a>
+        </h2>
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institute of Chartered Accountants of Scotland</a>
+        </h2>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institute of Marine Engineering Science and Technology</a>
+        </h2>
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institution of Electrical Engineers</a>
+        </h2>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Law Society of England and Wales</a>
+        </h2>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Master of the Faculties</a>
+        </h2>
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Office for Rail and Road</a>
+        </h2>
+      </div>
+
+    </div>
+
+  </div>
+
+{% endblock %}
