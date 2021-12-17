@@ -1,0 +1,237 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Registered Gas Engineer
+{% endblock %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Capita Gas Registration and Ancillary Services Ltd</span>
+      <h1 class="govuk-heading-xl">
+        Registered Gas Engineer
+      </h1>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Nations"
+            },
+            value: {
+              text: "All regions"
+            }
+          },
+          {
+            key: {
+              text: "Industry / sector"
+            },
+            value: {
+              text: "Construction & Engineering"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Regulators
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Regulated authority"
+            },
+            value: {
+              text: "Capita Gas Registration and Ancillary Services Ltd"
+            }
+          },
+          {
+            key: {
+              text: "Website"
+            },
+            value: {
+              html: '<a href="https://www.gassaferegister.co.uk/help-and-advice/becoming-registered/apply-now/" class="govuk-link">https://www.gassaferegister.co.uk/help-and-advice/becoming-registered/apply-now/</a>'
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: '200 Chineham Park</br>Basingstoke</br>RG24 8WD'
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "N/A"
+            }
+          },        
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: "+44 (0) 7766 397564"
+            }
+          },
+          {
+            key: {
+              text: "Registration with regulator is"
+            },
+            value: {
+              text: "Voluntary"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Regulated activities
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Reserved activities"
+            },
+            value: {
+              text: "Gas Safe Register is the official list of gas engineers in the UK, Isle of Man and Guernsey. To work on gas appliances and installations you must be on the gas safe register. The register exists to protect the public from unsafe gas work (EN)"
+            }
+          },
+          {
+            key: {
+              text: "Description of activities / regulation description"
+            },
+            value: {
+              text: "Gas Safe Register is the official list of gas engineers in the UK, Isle of Man and Guernsey. Gas installers work on gas appliances and installations."
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Qualification information
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Qualification level"
+            },
+            value: {
+              text: "ATT - Attestation of competence , Art. 11 a"
+            }
+          },
+          {
+            key: {
+              text: "Methods to obtain qualification"
+            },
+            value: {
+              text: "Accredited Certification Scheme accredited by the United Kongdom Accrediation Service UKAS in accordance with ISO EN 17024 or an approprate National/Scottish Vocational Qualification at level 2"
+            }
+          },
+          {
+            key: {
+              text: "Most common path to obtain qualification"
+            },
+            value: {
+              text: "General seconday education"
+            }
+          },
+          {
+            key: {
+              text: "Duration of qualification"
+            },
+            value: {
+              text: "1.0 Year"
+            }
+          },
+          {
+            key: {
+              text: "Existence of mandatory professional experience"
+            },
+            value: {
+              text: "No"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Legislation
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "National legislation"
+            },
+            value: {
+              text: "Gas Safety (Installation and Use ) Regulations 1998"
+            }
+          },
+          {
+            key: {
+              text: "Legislation link"
+            },
+            value: {
+              html: '<a class="govuk-link" href="http://www.legislation.gov.uk/uksi/1998/2451/made">http://www.legislation.gov.uk/uksi/1998/2451/made</a>'
+            }
+          }
+        ]
+      }) }}
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Actions
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          {{ govukButton({
+            text: "Edit this profession"
+          }) }}
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}

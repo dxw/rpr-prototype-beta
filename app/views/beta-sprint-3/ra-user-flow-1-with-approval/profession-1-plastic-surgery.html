@@ -1,0 +1,245 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Plastic surgery
+{% endblock %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">General Medical Council</span>
+      <h1 class="govuk-heading-xl">
+        Plastic surgery
+      </h1>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Nations"
+            },
+            value: {
+              text: "All regions"
+            }
+          },
+          {
+            key: {
+              text: "Industry / sector"
+            },
+            value: {
+              text: "Health"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Regulators
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Regulated authority"
+            },
+            value: {
+              text: "General Medical Council"
+            }
+          },
+          {
+            key: {
+              text: "Website"
+            },
+            value: {
+              text: "N/A"
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: '350 Euston Road</br>London</br>NW1 3JN'
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "N/A"
+            }
+          },         
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: "+44 161 923 6602"
+            }
+          },
+          {
+            key: {
+              text: "Registration with regulator is"
+            },
+            value: {
+              text: "Mandatory"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Regulated activities
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Reserved activities"
+            },
+            value: {
+              text: "[no data]"
+            }
+          },
+          {
+            key: {
+              text: "Description of activities / regulation description"
+            },
+            value: {
+              text: "A major proportion of the workload involves dealing with urgent or emergency cases including: â€¢ Hand trauma. â€¢ Burns and scalds â€¢ Soft tissue injuries involving face, trunk or limbs. Elective surgery includes the following major areas: â€¢ Head and neck. This includes excisional and reconstructive surgery for congenital and acquired abnormalities, and for malignancy involving the face and mouth. â€¢ Cleft lip and palate and other craniofacial abnormalities. â€¢ Breast: including surgery for reconstruction, reduction and augmentation. â€¢ Hand and upper limb: including congenital and acquired conditions. â€¢ Skin and soft tissue tumours. â€¢ Congenital and acquired deformities of the trunk and urogenital system. â€¢ Aesthetic or cosmetic surgery."
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Qualification information
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Qualification level"
+            },
+            value: {
+              text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+            }
+          },
+          {
+            key: {
+              text: "Methods to obtain qualification"
+            },
+            value: {
+              text: "Vocational post-secondary education level"
+            }
+          },
+          {
+            key: {
+              text: "Most common path to obtain qualification"
+            },
+            value: {
+              text: "Vocational post-secondary education level"
+            }
+          },
+          {
+            key: {
+              text: "Duration of qualification"
+            },
+            value: {
+              text: "7.0 Year"
+            }
+          },
+          {
+            key: {
+              text: "Existence of mandatory professional experience"
+            },
+            value: {
+              text: "Yes"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Legislation
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "National legislation"
+            },
+            value: {
+              text: "Medical Act 1983"
+            }
+          },
+          {
+            key: {
+              text: "Legislation link"
+            },
+            value: {
+              html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+            }
+          }
+        ]
+      }) }}
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="app-related-items" role="complementary">
+        
+        <h2 class="govuk-heading-s">
+          Status<br>
+          <span class="govuk-body">Published</span>
+        </h2>
+
+        <nav role="navigation" aria-labelledby="subsection-title">
+          {{ govukButton({
+            text: "Edit this profession"
+          }) }}
+
+          {{ govukButton({
+            text: "Delete this profession",
+            classes: "govuk-button--warning"
+          }) }}
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}
