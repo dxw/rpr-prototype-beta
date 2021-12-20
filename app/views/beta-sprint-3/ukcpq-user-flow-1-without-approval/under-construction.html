@@ -4,6 +4,8 @@
   Select a service
 {% endblock %}
 
+{% set bodyClasses = "rpr-internal__page" %}
+
 {% block beforeContent %}
   {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
   {{ govukPhaseBanner({

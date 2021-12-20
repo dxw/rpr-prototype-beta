@@ -17,6 +17,18 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
+.rpr-internal__page {
+  .govuk-header__container {
+    border-bottom: 10px solid govuk-colour("yellow");  
+  }
+}
+
+.rpr-internal__details-page-sidebar {
+  .govuk-button {
+    margin-bottom: 0;
+  }
+}
+
 .rpr-listing__filters-container {
   background-color: govuk-colour("light-grey");
   padding: 1rem;

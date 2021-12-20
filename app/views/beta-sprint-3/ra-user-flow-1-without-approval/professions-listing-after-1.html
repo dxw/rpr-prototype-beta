@@ -4,7 +4,7 @@
   Search for a regulated profession
 {% endblock %}
 
-{% set bodyClasses = "rpr-internal__listing" %}
+{% set bodyClasses = "rpr-internal__listing rpr-internal__page" %}
 
 {% block beforeContent %}
   {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
@@ -31,7 +31,7 @@
         Add a new profession 
       </h2>
       <p>You can add a new profession for your organisation here.</p>
-      <form action="#" method="post" class="form">
+      <form action="ra-adding-a-new-profession-page-1" method="post" class="form">
         {{ govukButton({
           text: "Add a new profession"
         }) }}
@@ -52,7 +52,7 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-          <form action="professions-listing-2" method="post" class="form">
+          <form action="professions-listing-after-2" method="post" class="form">
 
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-one-third">
@@ -189,7 +189,7 @@
         </p>
       {% endif %}
       
-      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">19</span> professions found.</p>
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">20</span> professions found.</p>
 
 
       {{ govukTable({
@@ -218,6 +218,29 @@
           }
         ],
         rows: [
+          [
+            {
+              text: data['new-profession-title']
+            },
+            {
+              text: "GMCRP175"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "21-12-2021"
+            },
+            {
+              text: "Alex Young"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-5-new-profession">View details</a>'
+            }
+          ],
           [
             {
               text: "Neurology"

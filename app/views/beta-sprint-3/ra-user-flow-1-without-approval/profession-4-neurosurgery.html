@@ -1,8 +1,10 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Nuclear medicine
+  Neurosurgery
 {% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
 
 {% block beforeContent %}
   {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
@@ -22,7 +24,7 @@
 
       <span class="govuk-caption-l">General Medical Council</span>
       <h1 class="govuk-heading-xl">
-        Nuclear medicine
+        Neurosurgery
       </h1>
 
       {{ govukSummaryList({
@@ -129,7 +131,7 @@
               text: "Description of activities / regulation description"
             },
             value: {
-              text: "Basic radiation safety: Understanding legal requirements for safe handling of radioisotopes: Basic science underpinning safe practice of nuclear medicine: Assessment of patientâ€™s condition and appropriateness of diagnostic test: An understanding of how to conduct nuclear medicine tests and skills to report those tests accurately and understand how these results fit into the patient's ongoing management: Understand appropriate and safe administration of radionuclide therapy and relevant patient aftercare for patient and their families: Communication with patients and other members of nuclear medicine team: Understanding inter-relationship of nuclear medicine studies and other diagnostic tests: Building skills in communicating results of investigations with clinicians: Safe and appropriate uses of interventions such as cardiac testing: Understanding role of the Nuclear Medicine Physician as a medical profession in the health service: Promoting personal and professional development."
+              text: "Basic radiation safety: Understanding legal requirements for safe handling of radioisotopes: Basic science underpinning safe practice of Neurosurgery: Assessment of patientâ€™s condition and appropriateness of diagnostic test: An understanding of how to conduct Neurosurgery tests and skills to report those tests accurately and understand how these results fit into the patient's ongoing management: Understand appropriate and safe administration of radionuclide therapy and relevant patient aftercare for patient and their families: Communication with patients and other members of Neurosurgery team: Understanding inter-relationship of Neurosurgery studies and other diagnostic tests: Building skills in communicating results of investigations with clinicians: Safe and appropriate uses of interventions such as cardiac testing: Understanding role of the Neurosurgery Physician as a medical profession in the health service: Promoting personal and professional development."
             }
           }
         ]
@@ -220,26 +222,41 @@
 
     <div class="govuk-grid-column-one-third">
 
-      <aside class="app-related-items" role="complementary">
-
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+        
         <h2 class="govuk-heading-s">
           Status<br>
-          <span class="govuk-body">Published</span>
+          <span class="govuk-body">Draft</span>
         </h2>
 
         <nav role="navigation" aria-labelledby="subsection-title">
-          {{ govukButton({
-            text: "Edit this profession"
-          }) }}
 
-          {{ govukButton({
-            text: "Delete this profession",
-            classes: "govuk-button--warning"
-          }) }}
+          <ul class="govuk-list">
+            <li>
+              <form action="ra-adding-a-new-profession-check-your-answers" method="post" class="form">
+                <input name="new-profession-title" value="Neurosurgery" type="hidden">
+                <input class="govuk-checkboxes__input" id="new-profession-nations" name="new-profession-nations" type="checkbox" value="england" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="new-profession-nations" name="new-profession-nations" type="checkbox" value="scotland" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="new-profession-nations" name="new-profession-nations" type="checkbox" value="wales" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="new-profession-nations" name="new-profession-nations" type="checkbox" value="northern-ireland" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="new-profession-industries" name="new-profession-industries" type="checkbox" value="health" type="hidden" checked>
+                {{ govukButton({
+                  text: "Continue editing"
+                }) }}
+              </form>
+            </li>
+            <li>
+              {{ govukButton({
+                text: "Delete draft",
+                classes: "govuk-button--warning"
+              }) }}
+            </li>
+          </ul>
         </nav>
       </aside>
 
     </div>
+    
   </div>
 
 {% endblock %}

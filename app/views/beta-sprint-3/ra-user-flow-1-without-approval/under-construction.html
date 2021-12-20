@@ -1,8 +1,10 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Home
+  Select a service
 {% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
 
 {% block beforeContent %}
   {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
@@ -18,31 +20,9 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-third">
-
-      <nav role="navigation" aria-labelledby="subsection-title">
-        <ul class="govuk-list">
-          <li>
-            <a class="govuk-link" href="professions-listing-1">Regulated professions</a>
-          </li>
-          <li>
-            <a class="govuk-link" href="#">Regulatory authorities</a>
-          </li>
-          <li>
-            <a class="govuk-link" href="#">Logout</a>
-          </li>
-        </ul>
-      </nav>
-
-    </div>
     <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-xl">
-        Welcome GMC users
-      </h1>
-
+      <h1 class="govuk-heading-l">This page is under construction.</h1>
     </div>
-
   </div>
 
 {% endblock %}

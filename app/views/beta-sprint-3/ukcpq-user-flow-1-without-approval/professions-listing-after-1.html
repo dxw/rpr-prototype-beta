@@ -4,7 +4,7 @@
   Search for a regulated profession
 {% endblock %}
 
-{% set bodyClasses = "rpr-internal__listing" %}
+{% set bodyClasses = "rpr-internal__listing rpr-internal__page" %}
 
 {% block beforeContent %}
   {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
@@ -31,7 +31,7 @@
         Add a new profession 
       </h2>
       <p>You can add a new profession for your organisation here.</p>
-      <form action="#" method="post" class="form">
+      <form action="ra-adding-a-new-profession-page-1" method="post" class="form">
         {{ govukButton({
           text: "Add a new profession"
         }) }}
@@ -52,7 +52,7 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-          <form action="professions-listing-2" method="post" class="form">
+          <form action="professions-listing-after-2" method="post" class="form">
 
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-one-third">
@@ -189,10 +189,7 @@
         </p>
       {% endif %}
       
-
-      {% if data['profession-keyword'] %}
-
-      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">1</span> profession found.</p>
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">20</span> professions found.</p>
 
 
       {{ govukTable({
@@ -223,16 +220,16 @@
         rows: [
           [
             {
-              text: "Plastic surgery"
+              text: data['new-profession-title']
             },
             {
-              text: "GMCRP163"
+              text: "GMCRP175"
             },
             {
               text: "United Kingdom"
             },
             {
-              text: "16-12-2021"
+              text: "21-12-2021"
             },
             {
               text: "Alex Young"
@@ -241,44 +238,32 @@
               text: "Published"
             },
             {
-              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+              html: '<a class="govuk-link" href="profession-5-new-profession">View details</a>'
             }
-          ]
-        ]
-      }) }}
-
-
-      {% else %}
-
-      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">10</span> professions found.</p>
-
-
-      {{ govukTable({
-        firstCellIsHeader: true,
-        head: [
-          {
-            text: "Profession"
-          },
-          {
-            text: "ID"
-          },
-          {
-            text: "Nations"
-          },
-          {
-            text: "last modified"
-          },
-          {
-            text: "Modified by"
-          },
-          {
-            text: "Status"
-          },
-          {
-            text: "Actions"
-          }
-        ],
-        rows: [
+          ],
+          [
+            {
+              text: "Neurology"
+            },
+            {
+              text: "GMCRP153"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Clare Jones"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
           [
             {
               text: "Neurosurgery"
@@ -350,6 +335,75 @@
           ],
           [
             {
+              text: "Occupational medicine"
+            },
+            {
+              text: "GMCRP157"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Clare Jones"
+            },
+            {
+              text: "Draft"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Ophthalmology"
+            },
+            {
+              text: "GMCRP158"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "11-12-2021"
+            },
+            {
+              text: "Clare Jones"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Oral and maxillo-facial surgery"
+            },
+            {
+              text: "GMCRP159"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "02-12-2021"
+            },
+            {
+              text: "Clare Jones"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
               text: "Otolaryngology"
             },
             {
@@ -396,6 +450,29 @@
           ],
           [
             {
+              text: "Paediatrics"
+            },
+            {
+              text: "GMCRP162"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "13-12-2021"
+            },
+            {
+              text: "Clare Jones"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
               text: "Plastic surgery"
             },
             {
@@ -409,6 +486,52 @@
             },
             {
               text: "Alex Young"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Public health medicine"
+            },
+            {
+              text: "GMCRP164"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "12-12-2021"
+            },
+            {
+              text: "Clare Jones"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Renal medicine"
+            },
+            {
+              text: "GMCRP165"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "18-11-2021"
+            },
+            {
+              text: "Clare Jones"
             },
             {
               text: "Published"
@@ -438,6 +561,52 @@
             },
             {
               html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Rheumatology"
+            },
+            {
+              text: "GMCRP167"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "13-12-2021"
+            },
+            {
+              text: "Clare Jones"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Trauma and orthopaedic surgery"
+            },
+            {
+              text: "GMCRP168"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "10-12-2021"
+            },
+            {
+              text: "Clare Jones"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
             }
           ],
           [
@@ -511,9 +680,6 @@
           ]
         ]
       }) }}
-
-      {% endif %}
-
     </div>
 
   </div>
