@@ -119,7 +119,7 @@
                   classes: "govuk-checkboxes--small rpr-internal-listing__filter",
                   fieldset: {
                     legend: {
-                      text: "Last modified",
+                      text: "Changed by",
                       isPageHeading: true,
                       classes: "govuk-fieldset__legend--s"
                     }
@@ -182,7 +182,7 @@
       {% endif %}
 
       {% if data['profession-modified-by'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Modified by:</span> 
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Changed by:</span> 
         {% for modifiedBy in data['profession-modified-by'] %}
           <strong class="govuk-tag">{{ modifiedBy }}</strong>
         {% endfor %}
@@ -211,7 +211,7 @@
             text: "last modified"
           },
           {
-            text: "Modified by"
+            text: "Changed by"
           },
           {
             text: "Status"
@@ -269,7 +269,7 @@
             text: "last modified"
           },
           {
-            text: "Modified by"
+            text: "Changed by"
           },
           {
             text: "Status"

@@ -20,7 +20,7 @@
 {% block content %}
 
   <h1 class="govuk-heading-xl">
-    <span class="govuk-caption-l">General Medical Council</span>
+    <span class="govuk-caption-l">UK Centre for Professional Qualifications</span>
     Regulated professions
   </h1>
 
@@ -52,10 +52,10 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-          <form action="professions-listing-after-2" method="post" class="form">
+          <form action="professions-listing-2" method="post" class="form">
 
             <div class="govuk-grid-row">
-              <div class="govuk-grid-column-one-third">
+              <div class="govuk-grid-column-one-quarter">
                 {{ govukInput({
                   label: {
                     text: "Keyword",
@@ -72,7 +72,7 @@
                 }) }}
               </div>
 
-              <div class="govuk-grid-column-one-third">
+              <div class="govuk-grid-column-one-quarter">
                 {{ govukCheckboxes({
                   idPrefix: "profession-nations",
                   name: "profession-nations",
@@ -112,14 +112,14 @@
                 }) }}
               </div>
 
-              <div class="govuk-grid-column-one-third">
+              <div class="govuk-grid-column-one-quarter">
                 {{ govukCheckboxes({
-                  idPrefix: "profession-modified-by",
-                  name: "profession-modified-by",
+                  idPrefix: "profession-regulators",
+                  name: "profession-regulators",
                   classes: "govuk-checkboxes--small rpr-internal-listing__filter",
                   fieldset: {
                     legend: {
-                      text: "Last modified",
+                      text: "Regulators",
                       isPageHeading: true,
                       classes: "govuk-fieldset__legend--s"
                     }
@@ -129,14 +129,94 @@
                   },
                   items: [
                     {
-                      value: "Clare Jones",
-                      text: "Clare Jones",
-                      checked: checked("profession-modified-by", "Clare Jones")
+                      value: "General Medicine Council",
+                      text: "General Medicine Council",
+                      checked: checked("profession-regulators", "General Medicine Council")
                     },
                     {
-                      value: "Alex Young",
-                      text: "Alex Young",
-                      checked: checked("profession-modified-by", "Alex Young")
+                      value: "Capita Gas Registration and Ancillary Services Ltd",
+                      text: "Capita Gas Registration and Ancillary Services Ltd",
+                      checked: checked("profession-regulators", "Capita Gas Registration and Ancillary Services Ltd")
+                    },
+                    {
+                      value: "Education Workforce Council",
+                      text: "Education Workforce Council",
+                      checked: checked("profession-regulators", "Education Workforce Council")
+                    }
+                  ]
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+                {{ govukCheckboxes({
+                  idPrefix: "profession-industries",
+                  name: "profession-industries",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Industry / sector",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "construction-engineering",
+                      text: "Construction & Engineering",
+                      checked: checked("profession-industries", "construction-engineering")
+                    },
+                    {
+                      value: "education",
+                      text: "Education",
+                      checked: checked("profession-industries", "education")
+                    },
+                    {
+                      value: "finance",
+                      text: "Finance",
+                      checked: checked("profession-industries", "finance")
+                    },
+                    {
+                      value: "health",
+                      text: "Health",
+                      checked: checked("profession-industries", "health")
+                    },
+                    {
+                      value: "law",
+                      text: "Law",
+                      checked: checked("profession-industries", "law")
+                    },
+                    {
+                      value: "shipping",
+                      text: "Shipping",
+                      checked: checked("profession-industries", "shipping")
+                    },
+                    {
+                      value: "other",
+                      text: "Other",
+                      checked: checked("profession-industries", "other")
+                    },
+                    {
+                      value: "security",
+                      text: "Security",
+                      checked: checked("profession-industries", "security")
+                    },
+                    {
+                      value: "transport",
+                      text: "Transport",
+                      checked: checked("profession-industries", "transport")
+                    },
+                    {
+                      value: "energy",
+                      text: "Energy",
+                      checked: checked("profession-industries", "energy")
+                    },
+                    {
+                      value: "science",
+                      text: "Science",
+                      checked: checked("profession-industries", "science")
                     }
                   ]
                 }) }}
@@ -181,15 +261,23 @@
         </p>
       {% endif %}
 
-      {% if data['profession-modified-by'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Modified by:</span> 
-        {% for modifiedBy in data['profession-modified-by'] %}
-          <strong class="govuk-tag">{{ modifiedBy }}</strong>
+      {% if data['profession-regulators'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Regulators:</span> 
+        {% for regulator in data['profession-regulators'] %}
+          <strong class="govuk-tag">{{ regulator }}</strong>
         {% endfor %}
         </p>
       {% endif %}
       
-      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">20</span> professions found.</p>
+      {% if data['profession-industries'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries / sectors:</span> 
+        {% for industry in data['profession-industries'] %}
+          <strong class="govuk-tag">{{ industry }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">221</span> professions found.</p>
 
 
       {{ govukTable({
@@ -208,7 +296,10 @@
             text: "last modified"
           },
           {
-            text: "Modified by"
+            text: "Regulators"
+          },
+          {
+            text: "Industry / sector"
           },
           {
             text: "Status"
@@ -232,13 +323,94 @@
               text: "21-12-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
             },
             {
               html: '<a class="govuk-link" href="profession-5-new-profession">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Registered Gas Engineer"
+            },
+            {
+              text: "CGRRP001"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Capita Gas Registration and Ancillary Services Ltd"
+            },
+            {
+              text: "Construction & Engineering"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Teacher at a Further Education Institution (Wales)"
+            },
+            {
+              text: "EWCRP053"
+            },
+            {
+              text: "Wales"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Education Workforce Council"
+            },
+            {
+              text: "Education"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "School Teacher in State Maintained schools (Wales)"
+            },
+            {
+              text: "EWCRP054"
+            },
+            {
+              text: "Wales"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Education Workforce Council"
+            },
+            {
+              text: "Education"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
             }
           ],
           [
@@ -255,7 +427,10 @@
               text: "16-12-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -278,10 +453,13 @@
               text: "13-12-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
             },
             {
-              text: "Draft"
+              text: "Health"
+            },
+            {
+              text: "Published"
             },
             {
               html: '<a class="govuk-link" href="profession-4-neurosurgery">View details</a>'
@@ -301,7 +479,10 @@
               text: "08-11-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -324,7 +505,10 @@
               text: "16-12-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -347,10 +531,13 @@
               text: "16-12-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
             },
             {
-              text: "Draft"
+              text: "Health"
+            },
+            {
+              text: "Published"
             },
             {
               html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
@@ -370,7 +557,10 @@
               text: "11-12-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -393,7 +583,10 @@
               text: "02-12-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -416,7 +609,10 @@
               text: "16-12-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -439,7 +635,10 @@
               text: "27-11-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -462,7 +661,10 @@
               text: "13-12-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -485,7 +687,10 @@
               text: "16-12-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -508,7 +713,10 @@
               text: "12-12-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -531,7 +739,10 @@
               text: "18-11-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -554,7 +765,10 @@
               text: "02-11-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -577,7 +791,10 @@
               text: "13-12-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -600,7 +817,10 @@
               text: "10-12-2021"
             },
             {
-              text: "Clare Jones"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -623,7 +843,10 @@
               text: "16-12-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -646,7 +869,10 @@
               text: "16-12-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -669,7 +895,10 @@
               text: "12-12-2021"
             },
             {
-              text: "Alex Young"
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"

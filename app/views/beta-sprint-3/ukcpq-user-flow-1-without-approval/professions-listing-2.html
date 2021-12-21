@@ -55,7 +55,7 @@
           <form action="professions-listing-2" method="post" class="form">
 
             <div class="govuk-grid-row">
-              <div class="govuk-grid-column-one-third">
+              <div class="govuk-grid-column-one-quarter">
                 {{ govukInput({
                   label: {
                     text: "Keyword",
@@ -72,7 +72,7 @@
                 }) }}
               </div>
 
-              <div class="govuk-grid-column-one-third">
+              <div class="govuk-grid-column-one-quarter">
                 {{ govukCheckboxes({
                   idPrefix: "profession-nations",
                   name: "profession-nations",
@@ -112,7 +112,7 @@
                 }) }}
               </div>
 
-              <div class="govuk-grid-column-one-third">
+              <div class="govuk-grid-column-one-quarter">
                 {{ govukCheckboxes({
                   idPrefix: "profession-regulators",
                   name: "profession-regulators",
@@ -142,6 +142,81 @@
                       value: "Education Workforce Council",
                       text: "Education Workforce Council",
                       checked: checked("profession-regulators", "Education Workforce Council")
+                    }
+                  ]
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+                {{ govukCheckboxes({
+                  idPrefix: "profession-industries",
+                  name: "profession-industries",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Industry / sector",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "construction-engineering",
+                      text: "Construction & Engineering",
+                      checked: checked("profession-industries", "construction-engineering")
+                    },
+                    {
+                      value: "education",
+                      text: "Education",
+                      checked: checked("profession-industries", "education")
+                    },
+                    {
+                      value: "finance",
+                      text: "Finance",
+                      checked: checked("profession-industries", "finance")
+                    },
+                    {
+                      value: "health",
+                      text: "Health",
+                      checked: checked("profession-industries", "health")
+                    },
+                    {
+                      value: "law",
+                      text: "Law",
+                      checked: checked("profession-industries", "law")
+                    },
+                    {
+                      value: "shipping",
+                      text: "Shipping",
+                      checked: checked("profession-industries", "shipping")
+                    },
+                    {
+                      value: "other",
+                      text: "Other",
+                      checked: checked("profession-industries", "other")
+                    },
+                    {
+                      value: "security",
+                      text: "Security",
+                      checked: checked("profession-industries", "security")
+                    },
+                    {
+                      value: "transport",
+                      text: "Transport",
+                      checked: checked("profession-industries", "transport")
+                    },
+                    {
+                      value: "energy",
+                      text: "Energy",
+                      checked: checked("profession-industries", "energy")
+                    },
+                    {
+                      value: "science",
+                      text: "Science",
+                      checked: checked("profession-industries", "science")
                     }
                   ]
                 }) }}
@@ -195,6 +270,14 @@
         </p>
       {% endif %}
 
+      {% if data['profession-industries'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries / sectors:</span> 
+        {% for industry in data['profession-industries'] %}
+          <strong class="govuk-tag">{{ industry }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
       {% if data['profession-keyword'] %}
 
       <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">1</span> profession found.</p>
@@ -216,6 +299,9 @@
           },
           {
             text: "Regulators"
+          },
+          {
+            text: "Industry / sector"
           },
           {
             text: "Status"
@@ -240,6 +326,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -276,6 +365,9 @@
             text: "Regulators"
           },
           {
+            text: "Industry / sector"
+          },
+          {
             text: "Status"
           },
           {
@@ -298,6 +390,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -323,6 +418,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -344,6 +442,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -369,6 +470,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -390,6 +494,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -415,6 +522,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -436,6 +546,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -461,6 +574,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -482,6 +598,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -507,6 +626,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -528,6 +650,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -553,6 +678,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -574,6 +702,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -599,6 +730,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -620,6 +754,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -645,6 +782,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -666,6 +806,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
@@ -691,6 +834,9 @@
               text: "General Medicine Council"
             },
             {
+              text: "Health"
+            },
+            {
               text: "Published"
             },
             {
@@ -712,6 +858,9 @@
             },
             {
               text: "General Medicine Council"
+            },
+            {
+              text: "Health"
             },
             {
               text: "Published"
