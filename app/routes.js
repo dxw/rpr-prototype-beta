@@ -3,6 +3,20 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+router.post('/beta-sprint-4/ukcpq-users/ra-approval-general-medical-council-amendment', function(req, res) {
+
+    const reviewAmendment = req.body["review-amendment"];
+
+    console.log(reviewAmendment);
+
+    if (reviewAmendment == "approve") {
+      res.render('beta-sprint-4/ukcpq-users/ra-approval-listing-approved');
+    } else {
+      res.render('beta-sprint-4/ukcpq-users/ra-approval-listing-rejected');
+    }
+
+});
+
 router.post('/beta-sprint-3/public-facing-v1/selected-service', function(req, res) {
 
     const selectedService = req.body["which-service"];

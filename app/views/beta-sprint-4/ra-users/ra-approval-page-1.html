@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Amending a new regulatory authority
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Amending a regulatory authority
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="">
+        <form action="ra-approval-check-your-answers" method="post" class="form">
+
+          {{ govukInput({
+            label: {
+              text: "Name of the regulatory authority",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "",
+            id: "amend-ra-title",
+            name: "amend-ra-title",
+            value: data['amend-ra-title']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Acronym",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "govuk-input--width-10",
+            id: "amend-ra-acronym",
+            name: "amend-ra-acronym",
+            value: data['amend-ra-acronym']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Website",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "",
+            id: "amend-ra-website",
+            name: "amend-ra-website",
+            value: data['amend-ra-website']
+          }) }}
+
+          {{ govukTextarea({
+            label: {
+              text: "Address",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "",
+            id: "amend-ra-address",
+            name: "amend-ra-address",
+            value: data['amend-ra-address']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Email address",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "",
+            id: "amend-ra-email",
+            name: "amend-ra-email",
+            value: data['amend-ra-email']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Phone number",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "",
+            id: "amend-ra-phone-number",
+            name: "amend-ra-phone-number",
+            value: data['amend-ra-phone-number']
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

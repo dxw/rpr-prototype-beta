@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  General Medical Council
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        General Medical Council
+      </h1>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Acroymn"
+            },
+            value: {
+              text: "GMC"
+            }
+          },
+          {
+            key: {
+              text: "Website"
+            },
+            value: {
+              html: '<a href="https://www.gmc-uk.org" class="govuk-link">www.gmc-uk.org</a>'
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: '350 Euston Road</br>London</br>NW1 3JN'
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "N/A"
+            }
+          },          
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: "+44 161 923 6602"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+      <h2 class="govuk-heading-l">
+        Regulated professions
+      </h2>
+
+      <div class="rpr-listing__ra-container">
+        <h3>
+          <a class="govuk-link govuk-heading-m rpr-listing__profession-title" href="profession-1-plastic-surgery">
+            Plastic surgery<br>
+            <span class="govuk-caption-m">United Kingdom</span>
+          </a>
+        </h3>
+      </div>
+
+      <div class="rpr-listing__ra-container">
+        <h3>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="profession-3-nuclear-medicine">
+            Nuclear Medicine<br>
+            <span class="govuk-caption-m">United Kingdom</span>
+          </a>
+        </h3>
+      </div>
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+        
+        <h2 class="govuk-heading-s">
+          Status<br>
+          <span class="govuk-body">Awaiting approval</span>
+        </h2>
+
+        <nav role="navigation" aria-labelledby="subsection-title">
+
+          <ul class="govuk-list">
+            <li>
+              {{ govukButton({
+                text: "Delete this amendment",
+                classes: "govuk-button--warning"
+              }) }}
+            </li>
+            <li style="margin-top: 60px;">
+              <a href="ra-approval-listing-3">Fast forward: amendment rejected</a>
+            </li>
+            <li>
+              <a href="ra-approval-listing-1">Fast forward: amendment approved</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}

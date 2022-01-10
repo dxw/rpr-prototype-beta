@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  General Medical Council
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        Amendment of regulatory authority
+      </h1>
+
+      <p>Please review the following changes to decide if you approve or reject the amendment.</p>
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Field name"
+          },
+          {
+            text: "Original content",
+            classes: 'govuk-!-width-one-third'
+          },
+          {
+            text: "Updated content",
+            classes: 'govuk-!-width-one-third'
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Title of the regulatory authority"
+            },
+            {
+              text: "General Medical Council"
+            },
+            {
+              text: "[No changes]"
+            }
+          ],
+          [
+            {
+              text: "Acronym"
+            },
+            {
+              text: "GMC"
+            },
+            {
+              text: "[No changes]"
+            }
+          ],
+          [
+            {
+              text: "Website"
+            },
+            {
+              text: "www.gmc-uk.org"
+            },
+            {
+              text: "[No changes]"
+            }
+          ],
+          [
+            {
+              text: "Address"
+            },
+            {
+              html: '350 Euston Road</br>London</br>NW1 3JN'
+            },
+            {
+              html: 'Office B2</br>11 Hoxton Square</br>London, N1 6NU'
+            }
+          ],
+          [
+            {
+              text: "Email address"
+            },
+            {
+              text: "N/A"
+            },
+            {
+              text: "info@gmc-uk.org"
+            }
+          ],
+          [
+            {
+              text: "Phone number"
+            },
+            {
+              text: "+44 161 923 6602"
+            },
+            {
+              text: "[No changes]"
+            }
+          ]
+        ]
+      }) }}
+
+      <div class="govuk-!-padding-bottom-6"></div>
+
+      <form action="ra-approval-general-medical-council-amendment" method="post" class="form">
+        {% set rejectHtml %}
+        {{ govukTextarea({
+          id: "reject-comments",
+          name: "reject-comments",
+          label: {
+            text: "Comments"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "review-amendment",
+          name: "review-amendment",
+          fieldset: {
+            legend: {
+              text: "Do you approve this amendment?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Select one option."
+          },
+          items: [
+            {
+              value: "approve",
+              text: "Approve the amendment"
+            },
+            {
+              value: "reject",
+              text: "Reject the amendment",
+              conditional: {
+                html: rejectHtml
+              }
+            }
+          ]
+        }) }}
+
+        <ul class="govuk-list">
+          <li>
+            {{ govukButton({
+              text: "Confirm"
+            }) }}
+          </li>
+        </ul>
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

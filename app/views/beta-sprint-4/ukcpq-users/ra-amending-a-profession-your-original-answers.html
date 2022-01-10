@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Amending a new profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <span class="govuk-caption-l">Amending a new profession</span>
+  <h1 class="govuk-heading-xl">
+    Your original answers
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of regulated profession
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['amend-profession-title'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="ra-amending-a-profession-page-1">
+              Change<span class="govuk-visually-hidden"> name of regulated profession</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            In which nation(s) is this profession regulated?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <ul> 
+            {% for nation in data['amend-profession-nations'] %}
+              <li class="govuk-body-m">{{ nation }}</li>
+            {% endfor %}
+            </ul>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="ra-amending-a-profession-page-1">
+              Change<span class="govuk-visually-hidden"> nations</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Industry / sector
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <ul> 
+            {% for industry in data['amend-profession-industries'] %}
+              <li class="govuk-body-m">{{ industry }}</li>
+            {% endfor %}
+            </ul>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="ra-amending-a-profession-page-1">
+              Change<span class="govuk-visually-hidden"> industry</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

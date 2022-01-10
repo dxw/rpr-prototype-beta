@@ -1,0 +1,890 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Search for a regulated profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__listing rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-l">UK Centre for Professional Qualifications</span>
+    Regulated professions
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-l">
+        Add a new profession 
+      </h2>
+      <p>You can add a new profession for your organisation here.</p>
+      <form action="ra-adding-a-new-profession-page-1" method="post" class="form">
+        {{ govukButton({
+          text: "Add a new profession"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-l">
+        Manage existing professions
+      </h2>
+
+      <div class="rpr-internal-listing__filters-container">
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Show filters
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <form action="professions-listing-2" method="post" class="form">
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-quarter">
+                {{ govukInput({
+                  label: {
+                    text: "Keyword",
+                    classes: "govuk-label--s",
+                    isPageHeading: true
+                  },
+                  classes: "",
+                  hint: {
+                    text: "For example, RP155, nuclear"
+                  },
+                  id: "profession-keyword",
+                  name: "profession-keyword",
+                  value: data['profession-keyword']
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+                {{ govukCheckboxes({
+                  idPrefix: "profession-nations",
+                  name: "profession-nations",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Nations",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "england",
+                      text: "England",
+                      checked: checked("profession-nations", "england")
+                    },
+                    {
+                      value: "scotland",
+                      text: "Scotland",
+                      checked: checked("profession-nations", "scotland")
+                    },
+                    {
+                      value: "wales",
+                      text: "Wales",
+                      checked: checked("profession-nations", "wales")
+                    },
+                    {
+                      value: "northern-ireland",
+                      text: "Northern Ireland",
+                      checked: checked("profession-nations", "northern-ireland")
+                    }
+                  ]
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+                {{ govukCheckboxes({
+                  idPrefix: "profession-regulators",
+                  name: "profession-regulators",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Regulators",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "General Medicine Council",
+                      text: "General Medicine Council",
+                      checked: checked("profession-regulators", "General Medicine Council")
+                    },
+                    {
+                      value: "Capita Gas Registration and Ancillary Services Ltd",
+                      text: "Capita Gas Registration and Ancillary Services Ltd",
+                      checked: checked("profession-regulators", "Capita Gas Registration and Ancillary Services Ltd")
+                    },
+                    {
+                      value: "Education Workforce Council",
+                      text: "Education Workforce Council",
+                      checked: checked("profession-regulators", "Education Workforce Council")
+                    }
+                  ]
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+                {{ govukCheckboxes({
+                  idPrefix: "profession-industries",
+                  name: "profession-industries",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Industry / sector",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "construction-engineering",
+                      text: "Construction & Engineering",
+                      checked: checked("profession-industries", "construction-engineering")
+                    },
+                    {
+                      value: "education",
+                      text: "Education",
+                      checked: checked("profession-industries", "education")
+                    },
+                    {
+                      value: "finance",
+                      text: "Finance",
+                      checked: checked("profession-industries", "finance")
+                    },
+                    {
+                      value: "health",
+                      text: "Health",
+                      checked: checked("profession-industries", "health")
+                    },
+                    {
+                      value: "law",
+                      text: "Law",
+                      checked: checked("profession-industries", "law")
+                    },
+                    {
+                      value: "shipping",
+                      text: "Shipping",
+                      checked: checked("profession-industries", "shipping")
+                    },
+                    {
+                      value: "other",
+                      text: "Other",
+                      checked: checked("profession-industries", "other")
+                    },
+                    {
+                      value: "security",
+                      text: "Security",
+                      checked: checked("profession-industries", "security")
+                    },
+                    {
+                      value: "transport",
+                      text: "Transport",
+                      checked: checked("profession-industries", "transport")
+                    },
+                    {
+                      value: "energy",
+                      text: "Energy",
+                      checked: checked("profession-industries", "energy")
+                    },
+                    {
+                      value: "science",
+                      text: "Science",
+                      checked: checked("profession-industries", "science")
+                    }
+                  ]
+                }) }}
+              </div>
+
+            </div>
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                {{ govukButton({
+                  text: "Filter results",
+                  classes: "govuk-button--secondary rpr-internal-listing__filter-button"
+                }) }}
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </details>
+
+
+
+      </div>
+
+      <div class="govuk-!-padding-bottom-6"></div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {% if data['profession-keyword'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['profession-keyword'] }}</strong></p>
+      {% endif %}
+
+      {% if data['profession-nations'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Nations:</span> 
+        {% for nation in data['profession-nations'] %}
+          <strong class="govuk-tag">{{ nation }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      {% if data['profession-regulators'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Regulators:</span> 
+        {% for regulator in data['profession-regulators'] %}
+          <strong class="govuk-tag">{{ regulator }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+      
+      {% if data['profession-industries'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries / sectors:</span> 
+        {% for industry in data['profession-industries'] %}
+          <strong class="govuk-tag">{{ industry }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">221</span> professions found.</p>
+
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Profession"
+          },
+          {
+            text: "ID"
+          },
+          {
+            text: "Nations"
+          },
+          {
+            text: "last modified"
+          },
+          {
+            text: "Regulators"
+          },
+          {
+            text: "Industry / sector"
+          },
+          {
+            text: "Status"
+          },
+          {
+            text: "Actions"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Registered Gas Engineer"
+            },
+            {
+              text: "CGRRP001"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Capita Gas Registration and Ancillary Services Ltd"
+            },
+            {
+              text: "Construction & Engineering"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-2-registered-gas-engineer">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Teacher at a Further Education Institution (Wales)"
+            },
+            {
+              text: "EWCRP053"
+            },
+            {
+              text: "Wales"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Education Workforce Council"
+            },
+            {
+              text: "Education"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "School Teacher in State Maintained schools (Wales)"
+            },
+            {
+              text: "EWCRP054"
+            },
+            {
+              text: "Wales"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Education Workforce Council"
+            },
+            {
+              text: "Education"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Neurology"
+            },
+            {
+              text: "GMCRP153"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Neurosurgery"
+            },
+            {
+              text: "GMCRP154"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "13-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-4-neurosurgery">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Nuclear medicine"
+            },
+            {
+              text: "GMCRP155"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "08-11-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Obstetrics and gynaecology"
+            },
+            {
+              text: "GMCRP156"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Occupational medicine"
+            },
+            {
+              text: "GMCRP157"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Ophthalmology"
+            },
+            {
+              text: "GMCRP158"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "11-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Oral and maxillo-facial surgery"
+            },
+            {
+              text: "GMCRP159"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "02-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Otolaryngology"
+            },
+            {
+              text: "GMCRP160"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Paediatric surgery"
+            },
+            {
+              text: "GMCRP161"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "27-11-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Paediatrics"
+            },
+            {
+              text: "GMCRP162"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "13-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Plastic surgery"
+            },
+            {
+              text: "GMCRP163"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Public health medicine"
+            },
+            {
+              text: "GMCRP164"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "12-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Renal medicine"
+            },
+            {
+              text: "GMCRP165"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "18-11-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Respiratory medicine"
+            },
+            {
+              text: "GMCRP166"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "02-11-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Rheumatology"
+            },
+            {
+              text: "GMCRP167"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "13-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Trauma and orthopaedic surgery"
+            },
+            {
+              text: "GMCRP168"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "10-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Tropical medicine"
+            },
+            {
+              text: "GMCRP169"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-1-plastic-surgery.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Urology"
+            },
+            {
+              text: "GMCRP170"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Vascular surgery"
+            },
+            {
+              text: "GMCRP171"
+            },
+            {
+              text: "United Kingdom"
+            },
+            {
+              text: "12-12-2021"
+            },
+            {
+              text: "General Medicine Council"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="profession-3-nuclear-medicine.html">View details</a>'
+            }
+          ]
+        ]
+      }) }}
+    </div>
+
+  </div>
+
+{% endblock %}
