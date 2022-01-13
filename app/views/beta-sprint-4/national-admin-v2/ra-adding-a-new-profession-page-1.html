@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Adding a new profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <span class="govuk-caption-l">Adding a new profession</span>
+  <h1 class="govuk-heading-xl">
+    Top level information
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="">
+        <form action="ra-adding-a-new-profession-check-your-answers" method="post" class="form">
+
+          {{ govukInput({
+            label: {
+              text: "Name of regulated profession",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "",
+            id: "new-profession-title",
+            name: "new-profession-title",
+            value: data['new-profession-title']
+          }) }}
+
+          {{ govukCheckboxes({
+            idPrefix: "new-profession-nations",
+            name: "new-profession-nations",
+            classes: "govuk-checkboxes",
+            fieldset: {
+              legend: {
+                text: "In which nation(s) is this profession regulated?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "Select all that apply."
+            },
+            items: [
+              {
+                value: "england",
+                text: "England",
+                checked: checked("new-profession-nations", "england")
+              },
+              {
+                value: "scotland",
+                text: "Scotland",
+                checked: checked("new-profession-nations", "scotland")
+              },
+              {
+                value: "wales",
+                text: "Wales",
+                checked: checked("new-profession-nations", "wales")
+              },
+              {
+                value: "northern-ireland",
+                text: "Northern Ireland",
+                checked: checked("new-profession-nations", "northern-ireland")
+              }
+            ]
+          }) }}
+
+          {{ govukCheckboxes({
+            idPrefix: "new-profession-industries",
+            name: "new-profession-industries",
+            classes: "govuk-checkboxes",
+            fieldset: {
+              legend: {
+                text: "Industry / sector",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "Select all that apply."
+            },
+            items: [
+              {
+                value: "construction-engineering",
+                text: "Construction & Engineering",
+                checked: checked("new-profession-industries", "construction-engineering")
+              },
+              {
+                value: "education",
+                text: "Education",
+                checked: checked("new-profession-industries", "education")
+              },
+              {
+                value: "finance",
+                text: "Finance",
+                checked: checked("new-profession-industries", "finance")
+              },
+              {
+                value: "health",
+                text: "Health",
+                checked: checked("new-profession-industries", "health")
+              },
+              {
+                value: "law",
+                text: "Law",
+                checked: checked("new-profession-industries", "law")
+              },
+              {
+                value: "shipping",
+                text: "Shipping",
+                checked: checked("new-profession-industries", "shipping")
+              },
+              {
+                value: "other",
+                text: "Other",
+                checked: checked("new-profession-industries", "other")
+              },
+              {
+                value: "security",
+                text: "Security",
+                checked: checked("new-profession-industries", "security")
+              },
+              {
+                value: "transport",
+                text: "Transport",
+                checked: checked("new-profession-industries", "transport")
+              },
+              {
+                value: "energy",
+                text: "Energy",
+                checked: checked("new-profession-industries", "energy")
+              },
+              {
+                value: "science",
+                text: "Science",
+                checked: checked("new-profession-industries", "science")
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

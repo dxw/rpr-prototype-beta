@@ -1,0 +1,279 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Dentist
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">General Medical Council</span>
+      <h1 class="govuk-heading-xl">
+        Dentist
+      </h1>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Nations"
+            },
+            value: {
+              text: "All regions"
+            }
+          },
+          {
+            key: {
+              text: "Industry / sector"
+            },
+            value: {
+              text: "Health"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Regulators
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Regulated authority"
+            },
+            value: {
+              text: "General Medical Council"
+            }
+          },
+          {
+            key: {
+              text: "Website"
+            },
+            value: {
+              text: "N/A"
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: '350 Euston Road</br>London</br>NW1 3JN'
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "N/A"
+            }
+          },         
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: "+44 161 923 6602"
+            }
+          },
+          {
+            key: {
+              text: "Registration with regulator is"
+            },
+            value: {
+              text: "Mandatory"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Regulated activities
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Reserved activities"
+            },
+            value: {
+              text: "[no data]"
+            }
+          },
+          {
+            key: {
+              text: "Description of activities / regulation description"
+            },
+            value: {
+              text: "A major proportion of the workload involves dealing with urgent or emergency cases including: â€¢ Hand trauma. â€¢ Burns and scalds â€¢ Soft tissue injuries involving face, trunk or limbs. Elective surgery includes the following major areas: â€¢ Head and neck. This includes excisional and reconstructive surgery for congenital and acquired abnormalities, and for malignancy involving the face and mouth. â€¢ Cleft lip and palate and other craniofacial abnormalities. â€¢ Breast: including surgery for reconstruction, reduction and augmentation. â€¢ Hand and upper limb: including congenital and acquired conditions. â€¢ Skin and soft tissue tumours. â€¢ Congenital and acquired deformities of the trunk and urogenital system. â€¢ Aesthetic or cosmetic surgery."
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Qualification information
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Qualification level"
+            },
+            value: {
+              text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+            }
+          },
+          {
+            key: {
+              text: "Methods to obtain qualification"
+            },
+            value: {
+              text: "Vocational post-secondary education level"
+            }
+          },
+          {
+            key: {
+              text: "Most common path to obtain qualification"
+            },
+            value: {
+              text: "Vocational post-secondary education level"
+            }
+          },
+          {
+            key: {
+              text: "Duration of qualification"
+            },
+            value: {
+              text: "7.0 Year"
+            }
+          },
+          {
+            key: {
+              text: "Existence of mandatory professional experience"
+            },
+            value: {
+              text: "Yes"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Legislation
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "National legislation"
+            },
+            value: {
+              text: "Medical Act 1983"
+            }
+          },
+          {
+            key: {
+              text: "Legislation link"
+            },
+            value: {
+              html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+            }
+          }
+        ]
+      }) }}
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+        
+        <h2 class="govuk-heading-s">
+          Status<br>
+          <span class="govuk-body">Draft</span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Changed by<br>
+          <span class="govuk-body">Alex Young</span>
+        </h2>
+    
+        <h2 class="govuk-heading-s">
+          Currently published version<br>
+          <span class="govuk-body">Not published yet</span>
+        </h2>
+
+        <nav role="navigation" aria-labelledby="subsection-title">
+
+          <ul class="govuk-list">
+            <li>
+              {{ govukButton({
+                text: "Publish now"
+              }) }}
+            </li>
+            <li>
+              <form action="ra-amending-a-profession-check-your-answers" method="post" class="form">
+                <input name="amend-profession-title" value="Dentist" type="hidden">
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="england" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="scotland" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="wales" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="northern-ireland" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-industries" name="amend-profession-industries" type="checkbox" value="health" type="hidden" checked>
+                {{ govukButton({
+                  text: "Continue editing",
+                  classes: "govuk-button--secondary"
+                }) }}
+              </form>
+            </li>
+            <li>
+              {{ govukButton({
+                text: "Delete draft",
+                classes: "govuk-button--warning"
+              }) }}
+            </li>
+
+          </ul>
+        </nav>
+
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}
