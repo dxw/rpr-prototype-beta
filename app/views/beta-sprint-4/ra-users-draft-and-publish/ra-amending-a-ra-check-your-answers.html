@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Adding a new regulatory authority
+  Amending a new regulatory authority
 {% endblock %}
 
 {% set bodyClasses = "rpr-internal__page" %}
@@ -19,7 +19,7 @@
 
 {% block content %}
 
-  <span class="govuk-caption-l">Adding a new regulatory authority</span>
+  <span class="govuk-caption-l">Amending a regulatory authority</span>
   <h1 class="govuk-heading-xl">
     Check your answers
   </h1>
@@ -34,10 +34,10 @@
             Name of the regulatory authority
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['new-ra-title'] }}
+            {{ data['amend-ra-title'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="ra-adding-a-new-ra-page-1">
+            <a class="govuk-link" href="ra-amending-a-ra-page-1">
               Change<span class="govuk-visually-hidden"> name of the regulatory authority</span>
             </a>
           </dd>
@@ -48,10 +48,10 @@
             Acronym
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['new-ra-acronym'] }}
+            {{ data['amend-ra-acronym'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="ra-adding-a-new-ra-page-1">
+            <a class="govuk-link" href="ra-amending-a-ra-page-1">
               Change<span class="govuk-visually-hidden"> acronym</span>
             </a>
           </dd>
@@ -62,10 +62,10 @@
             Website
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['new-ra-website'] }}
+            {{ data['amend-ra-website'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="ra-adding-a-new-ra-page-1">
+            <a class="govuk-link" href="ra-amending-a-ra-page-1">
               Change<span class="govuk-visually-hidden"> website</span>
             </a>
           </dd>
@@ -76,10 +76,10 @@
             Address
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['new-ra-address'] }}
+            {{ data['amend-ra-address'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="ra-adding-a-new-ra-page-1">
+            <a class="govuk-link" href="ra-amending-a-ra-page-1">
               Change<span class="govuk-visually-hidden"> address</span>
             </a>
           </dd>
@@ -90,10 +90,10 @@
             Email address
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['new-ra-email'] }}
+            {{ data['amend-ra-email'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="ra-adding-a-new-ra-page-1">
+            <a class="govuk-link" href="ra-amending-a-ra-page-1">
               Change<span class="govuk-visually-hidden"> email address</span>
             </a>
           </dd>
@@ -104,10 +104,10 @@
             Phone number
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['new-ra-phone-number'] }}
+            {{ data['amend-ra-phone-number'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="ra-adding-a-new-ra-page-1">
+            <a class="govuk-link" href="ra-amending-a-ra-page-1">
               Change<span class="govuk-visually-hidden"> phone number</span>
             </a>
           </dd>
@@ -115,14 +115,20 @@
 
       </dl>
 
-
       <div class="">
-        <form action="ra-adding-a-new-ra-confirmation" method="post" class="form">
+        <form action="ra-amending-a-ra-confirmation" style="display: inline-block;" method="post" class="form">
           {{ govukButton({
-            text: "Create regulatory authority"
+            text: "Publish now",
+            classes: "govuk-!-margin-right-3"
           }) }}
         </form>
 
+        <form action="ra-listing-1-new-draft-saved" style="display: inline-block;" method="post" class="form">
+          {{ govukButton({
+            text: "Save as draft",
+            classes: "govuk-button--secondary"
+          }) }}
+        </form>
       </div>
 
     </div>

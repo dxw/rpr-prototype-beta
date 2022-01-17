@@ -1,0 +1,485 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Regulatory authorities
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__listing rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-l">Department for Business, Energy and Industrial Strategy</span>
+    Regulatory authorities
+  </h1>
+
+  {% set html %}
+    <h3 class="govuk-notification-banner__heading">
+      Draft regulator created.
+    </h3>
+    <p class="govuk-body">The new regulator <strong>Science Council</strong> is not published yet.</p>
+  {% endset %}
+
+  {{ govukNotificationBanner({
+    html: html
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-l">
+        Add a new regulatory authority
+      </h2>
+      <p>You can add a new regulatory authority here.</p>
+      <form action="ra-adding-a-new-ra-page-1" method="post" class="form">
+        {{ govukButton({
+          text: "Add a new regulatory authority"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-l">
+        Manage existing regulatory authorities
+      </h2>
+
+      <div class="rpr-internal-listing__filters-container">
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Show filters
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <form action="#" method="post" class="form">
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-third">
+                {{ govukInput({
+                  label: {
+                    text: "Keyword",
+                    classes: "govuk-label--s",
+                    isPageHeading: true
+                  },
+                  classes: "",
+                  hint: {
+                    text: "For example, technology"
+                  },
+                  id: "regulator-keyword",
+                  name: "regulator-keyword",
+                  value: data['regulator-keyword']
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-third">
+                {{ govukCheckboxes({
+                  idPrefix: "regulator-industries",
+                  name: "regulator-industries",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Industry / sector",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "construction-engineering",
+                      text: "Construction & Engineering",
+                      checked: checked("regulator-industries", "construction-engineering")
+                    },
+                    {
+                      value: "education",
+                      text: "Education",
+                      checked: checked("regulator-industries", "education")
+                    },
+                    {
+                      value: "finance",
+                      text: "Finance",
+                      checked: checked("regulator-industries", "finance")
+                    },
+                    {
+                      value: "health",
+                      text: "Health",
+                      checked: checked("regulator-industries", "health")
+                    },
+                    {
+                      value: "law",
+                      text: "Law",
+                      checked: checked("regulator-industries", "law")
+                    },
+                    {
+                      value: "shipping",
+                      text: "Shipping",
+                      checked: checked("regulator-industries", "shipping")
+                    },
+                    {
+                      value: "other",
+                      text: "Other",
+                      checked: checked("regulator-industries", "other")
+                    },
+                    {
+                      value: "security",
+                      text: "Security",
+                      checked: checked("regulator-industries", "security")
+                    },
+                    {
+                      value: "transport",
+                      text: "Transport",
+                      checked: checked("regulator-industries", "transport")
+                    },
+                    {
+                      value: "energy",
+                      text: "Energy",
+                      checked: checked("regulator-industries", "energy")
+                    },
+                    {
+                      value: "science",
+                      text: "Science",
+                      checked: checked("regulator-industries", "science")
+                    }
+                  ]
+                }) }}
+              </div>
+
+            </div>
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                {{ govukButton({
+                  text: "Filter results",
+                  classes: "govuk-button--secondary rpr-internal-listing__filter-button"
+                }) }}
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </details>
+
+
+
+      </div>
+
+      <div class="govuk-!-padding-bottom-6"></div>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {% if data['regulator-keyword'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['regulator-keyword'] }}</strong></p>
+      {% endif %}
+      
+      {% if data['regulator-industries'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries / sectors:</span> 
+        {% for industry in data['regulator-industries'] %}
+          <strong class="govuk-tag">{{ industry }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      <p><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">76</span> regulatory authorities found.</p>
+
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Regulators",
+            classes: 'govuk-!-width-one-third'
+          },
+          {
+            text: "Acroymn"
+          },
+          {
+            text: "Industry / sector"
+          },
+          {
+            text: "Status"
+          },
+          {
+            text: "Actions"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Science Council"
+            },
+            {
+              text: "SC"
+            },
+            {
+              text: "Science"
+            },
+            {
+              text: "Draft"
+            },
+            {
+              html: '<a class="govuk-link" href="ra-1-general-medical-council">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "General Medical Council"
+            },
+            {
+              text: "GMC"
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="ra-1-general-medical-council">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Architects Registration Board"
+            },
+            {
+              text: "ARB"
+            },
+            {
+              text: "Construction & Engineering, Finance"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Association of Chartered Certified Accountants"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Finance"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Association of Chartered Certified Accountants (Scotland)"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Finance"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Chartered Institute for IT"
+            },
+            {
+              text: "BCS"
+            },
+            {
+              text: "Education"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "British Psychological Society"
+            },
+            {
+              text: "BPS"
+            },
+            {
+              text: "Education"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Care and Social Services Inspectorate for Wales"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Health"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Chartered Institute for Securities & Investment (CISI)"
+            },
+            {
+              text: "CISI"
+            },
+            {
+              text: "Finance"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Chartered Institute of Building"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Finance"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Chartered Institute of Housing"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Construction & Engineering"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Chartered Insurance Institute"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Other"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Costs Lawyer Standards Board"
+            },
+            {
+              text: "CLSB"
+            },
+            {
+              text: "Law"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Department for Business Energy and Industrial Strategy"
+            },
+            {
+              text: "BEIS"
+            },
+            {
+              text: "Other"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Education Workforce Council"
+            },
+            {
+              text: "EWC"
+            },
+            {
+              text: "Education"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ]
+        ]
+      }) }}
+    </div>
+
+  </div>
+
+{% endblock %}
