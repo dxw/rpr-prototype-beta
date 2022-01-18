@@ -27,27 +27,35 @@
         <li>view annual figures for applications to work in regulated professions in the UK</li>
       </ul>
 
-      <h2 class="govuk-heading-m">Check if your profession is regulated</h2>
+      <h2 class="govuk-heading-m">Checking if your profession is regulated</h2>
 
-      <p>You can <a class="govuk-link" href="professions-listing-1">check if a profession is regulated and the qualifications and experience you need to work in the UK</a>.</p>
+      <p>You can see if your profession is regulated and the qualifications and experience you need to work in the UK.</p>
 
-      <button class="govuk-button" data-module="govuk-button">
-        Start finding professions
-      </button>
+      <form action="professions-listing-1" method="post" class="form">
+        {{ govukButton({
+          text: "Check if your profession is regulated"
+        }) }}
+      </form>
 
-      <h2 class="govuk-heading-m">Find contact details for regulatory authorities</h2>
+      <h2 class="govuk-heading-m">Finding a regulatory authority</h2>
 
-      <p>You can <a class="govuk-link" href="ra-listing-1">contact the regulator for your profession</a> to find out about the process for becoming a recognised and registered professional.</p>
+      <p>You can find the contact details for the regulatory authority for your profession. </p>
 
-      <button class="govuk-button" data-module="govuk-button">
-        Start finding regulators
-      </button>
+      <form action="ra-listing-1" method="post" class="form">
+        {{ govukButton({
+          text: "Find the regulatory authority for your profession"
+        }) }}
+      </form>
 
-      <h2 class="govuk-heading-m">View annual figures for applications to work in regulated professions</h2>
+      <h2 class="govuk-heading-m">Viewing figures for applications to work in regulated professions</h2>
 
-      <p>You can <a class="govuk-link" href="#">find information about the total number of applications and the number of successful applications for each profession</a>.</p>
+      <p>You can find annual figures for the total number of applications and successful applications to work in regulated professions in the UK.</p>
 
-      <h2 class="govuk-heading-m">Get help checking a regulated profession</h2>
+      {{ govukButton({
+        text: "View application figures"
+      }) }}
+
+      <h2 class="govuk-heading-m">Getting help to check a regulated profession</h2>
 
       <p>Contact the <a class="govuk-link" href="#">UK Centre for Professional Qualifications (UK CPQ)</a> If you need support checking a regulated profession.</p>
 
