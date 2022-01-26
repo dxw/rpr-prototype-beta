@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Amending a regulatory authority
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Amending a regulatory authority</span>
+      <h1 class="govuk-heading-xl">
+        Are you sure you want to amend the information of {{data['amend-ra-title']}}?
+      </h1>
+
+      <div class="">
+        <form action="ra-amending-a-ra-your-original-answers" method="post" class="form">
+
+          {{ govukButton({
+            text: "Yes, continue"
+          }) }}
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

@@ -4,6 +4,8 @@
   Plastic surgery
 {% endblock %}
 
+{% set bodyClasses = "rpr-internal__page" %}
+
 {% block beforeContent %}
   {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
   {{ govukPhaseBanner({
@@ -220,16 +222,51 @@
 
     <div class="govuk-grid-column-one-third">
 
-      <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Related content
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+              
+        <h2 class="govuk-heading-s">
+          Status<br>
+          <span class="govuk-body">Published</span>
         </h2>
+
+        <h2 class="govuk-heading-s">
+          Last modified<br>
+          <span class="govuk-body">17-12-2021</span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Changed by<br>
+          <span class="govuk-body">Alex Young</span><br>
+          <span class="govuk-body"><a href="#">alexyoung@gmc-uk.org</a></span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Currently published version<br>
+          <span class="govuk-body"><a href="#" class="govuk-link">Public facing link</a></span>
+        </h2>
+        
         <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
+
+          <ul class="govuk-list">
             <li>
-              <a href="index.html">
-                Search related professions
-              </a>
+              <form action="ra-amending-a-profession-start" method="post" class="form">
+                <input name="amend-profession-title" value="Plastic Surgery" type="hidden">
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="england" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="scotland" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="wales" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="northern-ireland" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-industries" name="amend-profession-industries" type="checkbox" value="health" type="hidden" checked>
+                {{ govukButton({
+                  text: "Edit this profession",
+                  classes: "govuk-button--secondary"
+                }) }}
+              </form>
+            </li>
+            <li>
+              {{ govukButton({
+                text: "Delete this profession",
+                classes: "govuk-button--warning"
+              }) }}
             </li>
           </ul>
         </nav>

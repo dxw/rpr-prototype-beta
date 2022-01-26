@@ -1,8 +1,10 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Plastic surgery
+  Neurosurgery
 {% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
 
 {% block beforeContent %}
   {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
@@ -22,7 +24,7 @@
 
       <span class="govuk-caption-l">General Medical Council</span>
       <h1 class="govuk-heading-xl">
-        Plastic surgery
+        Neurosurgery
       </h1>
 
       {{ govukSummaryList({
@@ -87,7 +89,7 @@
             value: {
               text: "N/A"
             }
-          },         
+          },          
           {
             key: {
               text: "Phone number"
@@ -129,7 +131,7 @@
               text: "Description of activities / regulation description"
             },
             value: {
-              text: "A major proportion of the workload involves dealing with urgent or emergency cases including: â€¢ Hand trauma. â€¢ Burns and scalds â€¢ Soft tissue injuries involving face, trunk or limbs. Elective surgery includes the following major areas: â€¢ Head and neck. This includes excisional and reconstructive surgery for congenital and acquired abnormalities, and for malignancy involving the face and mouth. â€¢ Cleft lip and palate and other craniofacial abnormalities. â€¢ Breast: including surgery for reconstruction, reduction and augmentation. â€¢ Hand and upper limb: including congenital and acquired conditions. â€¢ Skin and soft tissue tumours. â€¢ Congenital and acquired deformities of the trunk and urogenital system. â€¢ Aesthetic or cosmetic surgery."
+              text: "Basic radiation safety: Understanding legal requirements for safe handling of radioisotopes: Basic science underpinning safe practice of Neurosurgery: Assessment of patientâ€™s condition and appropriateness of diagnostic test: An understanding of how to conduct Neurosurgery tests and skills to report those tests accurately and understand how these results fit into the patient's ongoing management: Understand appropriate and safe administration of radionuclide therapy and relevant patient aftercare for patient and their families: Communication with patients and other members of Neurosurgery team: Understanding inter-relationship of Neurosurgery studies and other diagnostic tests: Building skills in communicating results of investigations with clinicians: Safe and appropriate uses of interventions such as cardiac testing: Understanding role of the Neurosurgery Physician as a medical profession in the health service: Promoting personal and professional development."
             }
           }
         ]
@@ -173,7 +175,7 @@
               text: "Duration of qualification"
             },
             value: {
-              text: "7.0 Year"
+              text: "6.0 Year"
             }
           },
           {
@@ -220,22 +222,58 @@
 
     <div class="govuk-grid-column-one-third">
 
-      <aside class="app-related-items" role="complementary">
-        <h2 class="govuk-heading-m" id="subsection-title">
-          Related content
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+              
+        <h2 class="govuk-heading-s">
+          Status<br>
+          <span class="govuk-body">Published</span>
         </h2>
+
+        <h2 class="govuk-heading-s">
+          Last modified<br>
+          <span class="govuk-body">17-12-2021</span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Changed by<br>
+          <span class="govuk-body">Alex Young</span><br>
+          <span class="govuk-body"><a href="#">alexyoung@gmc-uk.org</a></span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Currently published version<br>
+          <span class="govuk-body"><a href="#" class="govuk-link">Public facing link</a></span>
+        </h2>
+        
         <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
+
+          <ul class="govuk-list">
             <li>
-              <a href="index.html">
-                Search related professions
-              </a>
+              <form action="ra-amending-a-profession-start" method="post" class="form">
+                <input name="amend-profession-title" value="Neurosurgery" type="hidden">
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="england" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="scotland" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="wales" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="northern-ireland" type="hidden" checked>
+                <input class="govuk-checkboxes__input" id="amend-profession-industries" name="amend-profession-industries" type="checkbox" value="health" type="hidden" checked>
+                {{ govukButton({
+                  text: "Edit this profession",
+                  classes: "govuk-button--secondary"
+                }) }}
+              </form>
+            </li>
+            <li>
+              {{ govukButton({
+                text: "Delete this profession",
+                classes: "govuk-button--warning"
+              }) }}
             </li>
           </ul>
         </nav>
       </aside>
 
     </div>
+    
   </div>
 
 {% endblock %}
