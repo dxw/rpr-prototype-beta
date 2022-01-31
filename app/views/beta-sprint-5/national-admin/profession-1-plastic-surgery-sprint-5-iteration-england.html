@@ -33,10 +33,10 @@
         rows: [
           {
             key: {
-              text: "Regulator"
+              text: "Regulators"
             },
             value: {
-              text: "General Medical Council"
+              html: "General Medical Council<br>Department of Health and Social Care"
             }
           },
           {
@@ -73,14 +73,6 @@
             },
             {
               key: {
-                text: "Address"
-              },
-              value: {
-                html: '350 Euston Road</br>London</br>NW1 3JN'
-              }
-            },
-            {
-              key: {
                 text: "Email address"
               },
               value: {
@@ -97,10 +89,10 @@
             },
             {
               key: {
-                text: "Registration with regulator is"
+                text: "Address"
               },
               value: {
-                text: "Mandatory"
+                html: '350 Euston Road</br>London</br>NW1 3JN'
               }
             }
           ]
@@ -125,14 +117,6 @@
             },
             {
               key: {
-                text: "Address"
-              },
-              value: {
-                html: 'Room 2W56</br>Quarry House</br>Quarry Hill</br>LS2 7UE'
-              }
-            },
-            {
-              key: {
                 text: "Email address"
               },
               value: {
@@ -146,6 +130,14 @@
               value: {
                 text: "+44 0113 254 6756"
               }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                html: 'Room 2W56</br>Quarry House</br>Quarry Hill</br>LS2 7UE'
+              }
             }
           ]
         }) }}
@@ -154,7 +146,7 @@
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
   
       <h2 class="govuk-heading-m rpr-details__section-title">
-        Regulated activities
+        Regulation
       </h2>
 
       <h3 class="govuk-heading-s">
@@ -170,20 +162,19 @@
       <p class="govuk-body">
         [no data]
       </p>
+
+      <h3 class="govuk-heading-s">
+        Protected titles
+      </h3>
+      <p class="govuk-body">
+        [no data]
+      </p>
       {{ govukSummaryList({
         classes: 'govuk-summary-list--no-border',
         rows: [
           {
             key: {
-              text: "Protected titles"
-            },
-            value: {
-              text: "[no data]"
-            }
-          },
-          {
-            key: {
-              text: "Link to more information"
+              text: "More about regulated activities and titles"
             },
             value: {
               html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
@@ -195,7 +186,7 @@
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
       <h2 class="govuk-heading-m rpr-details__section-title">
-        Qualification information
+        Qualifications and experience
       </h2>
 
       <div class="rpr-details__sub-group">
@@ -206,14 +197,6 @@
         {{ govukSummaryList({
           classes: 'govuk-summary-list--no-border',
           rows: [
-            {
-              key: {
-                text: "Qualification level"
-              },
-              value: {
-                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
-              }
-            },
             {
               key: {
                 text: "Methods to obtain qualification"
@@ -248,7 +231,15 @@
             },
             {
               key: {
-                text: "Link to more information"
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            },
+            {
+              key: {
+                text: "More about becoming qualified"
               },
               value: {
                 html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
@@ -268,15 +259,7 @@
           rows: [
             {
               key: {
-                text: "Qualification level"
-              },
-              value: {
-                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
-              }
-            },
-            {
-              key: {
-                text: "Methods to obtain qualification"
+                text: "Recognition of qualifications within the UK"
               },
               value: {
                 text: "Vocational post-secondary education level"
@@ -284,39 +267,7 @@
             },
             {
               key: {
-                text: "Most common path to obtain qualification"
-              },
-              value: {
-                text: "Vocational post-secondary education level"
-              }
-            },
-            {
-              key: {
-                text: "Duration of qualification"
-              },
-              value: {
-                text: "7.0 Year"
-              }
-            },
-            {
-              key: {
-                text: "Existence of mandatory professional experience"
-              },
-              value: {
-                text: "Yes"
-              }
-            },
-            {
-              key: {
-                text: "Recognition within the UK"
-              },
-              value: {
-                text: "Vocational post-secondary education level"
-              }
-            },
-            {
-              key: {
-                text: "Link to more information"
+                text: "More about recognition within the UK"
               },
               value: {
                 html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
@@ -336,15 +287,7 @@
           rows: [
             {
               key: {
-                text: "Qualification level"
-              },
-              value: {
-                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
-              }
-            },
-            {
-              key: {
-                text: "Methods to obtain qualification"
+                text: "Recognition of qualifications from other countries"
               },
               value: {
                 text: "Vocational post-secondary education level"
@@ -352,39 +295,7 @@
             },
             {
               key: {
-                text: "Most common path to obtain qualification"
-              },
-              value: {
-                text: "Vocational post-secondary education level"
-              }
-            },
-            {
-              key: {
-                text: "Duration of qualification"
-              },
-              value: {
-                text: "7.0 Year"
-              }
-            },
-            {
-              key: {
-                text: "Existence of mandatory professional experience"
-              },
-              value: {
-                text: "Yes"
-              }
-            },
-            {
-              key: {
-                text: "Recognition from other countries"
-              },
-              value: {
-                text: "Vocational post-secondary education level"
-              }
-            },
-            {
-              key: {
-                text: "Link to more information"
+                text: "More about recognition from other countries"
               },
               value: {
                 html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
@@ -404,7 +315,7 @@
         rows: [
           {
             key: {
-              text: "Registration with regulator is"
+              text: "Registration is"
             },
             value: {
               text: "Mandatory"
@@ -420,7 +331,7 @@
           },
           {
             key: {
-              text: "Link to more information"
+              text: "More about registration"
             },
             value: {
               html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
@@ -483,30 +394,6 @@
         }) }}
       </div>
 
-      <div class="rpr-details__sub-group">
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border',
-          rows: [
-            {
-              key: {
-                text: "Legislation title"
-              },
-              value: {
-                text: "Medical Act 1985"
-              }
-            },
-            {
-              key: {
-                text: "Legislation link"
-              },
-              value: {
-                html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
-              }
-            }
-          ]
-        }) }}
-      </div>
-
     </div>
 
     <div class="govuk-grid-column-one-third">
@@ -553,7 +440,7 @@
             </li>
             <li>
               {{ govukButton({
-                text: "Delete this profession",
+                text: "Archive this profession",
                 classes: "govuk-button--warning"
               }) }}
             </li>
