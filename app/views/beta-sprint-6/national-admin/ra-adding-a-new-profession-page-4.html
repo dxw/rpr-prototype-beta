@@ -1,0 +1,263 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Adding a new profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <span class="govuk-caption-l">Adding a new profession</span>
+  <h1 class="govuk-heading-xl">
+    Qualifications and experience
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="">
+        <form action="ra-adding-a-new-profession-page-5" method="post" class="form">
+
+          {% set otherQualificationMethodHtml %}
+          {{ govukTextarea({
+            name: "new-profession-qualification-method",
+            id: "new-profession-qualification-method",
+            value: data['new-profession-qualification-method'],
+            classes: "govuk-!-margin-bottom-6",
+            hint: {
+              text: "Please provide the methods to obtain the qualification"
+            }
+          }) }}
+          {% endset -%}
+
+          {{ govukRadios({
+            idPrefix: "new-profession-qualification-method",
+            name: "new-profession-qualification-method",
+            fieldset: {
+              legend: {
+                text: "Method to obtain qualification",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "Select one option."
+            },
+            items: [
+              {
+                value: "General secondary education",
+                text: "General secondary education"
+              },
+              {
+                value: "General or vocational post-secondary education",
+                text: "General or vocational post-secondary education"
+              },
+              {
+                value: "General post-secondary education incorporating mandatory vocational content",
+                text: "General post-secondary education incorporating mandatory vocational content"
+              },
+              {
+                value: "Vocational post-secondary education level",
+                text: "Vocational post-secondary education level"
+              },
+              {
+                value: "Degree level education in an approved education institution",
+                text: "Degree level education in an approved education institution"
+              },
+              {
+                value: "Others",
+                text: "Others",
+                conditional: {
+                  html: otherQualificationMethodHtml
+                }
+              }
+            ]
+          }) }}
+
+
+          {% set otherMostCommonPathHtml %}
+          {{ govukTextarea({
+            name: "new-profession-qualification-method",
+            id: "new-profession-qualification-method",
+            value: data['new-profession-qualification-method'],
+            classes: "govuk-!-margin-bottom-6",
+            hint: {
+              text: "Please provide the methods to obtain the qualification"
+            }
+          }) }}
+          {% endset -%}
+
+          {{ govukRadios({
+            idPrefix: "new-profession-most-common-path",
+            name: "new-profession-most-common-path",
+            fieldset: {
+              legend: {
+                text: "Method to obtain qualification",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "Select one option."
+            },
+            items: [
+              {
+                value: "General secondary education",
+                text: "General secondary education"
+              },
+              {
+                value: "General or vocational post-secondary education",
+                text: "General or vocational post-secondary education"
+              },
+              {
+                value: "General post-secondary education incorporating mandatory vocational content",
+                text: "General post-secondary education incorporating mandatory vocational content"
+              },
+              {
+                value: "Vocational post-secondary education level",
+                text: "Vocational post-secondary education level"
+              },
+              {
+                value: "Degree level education in an approved education institution",
+                text: "Degree level education in an approved education institution"
+              },
+              {
+                value: "Others",
+                text: "Others",
+                conditional: {
+                  html: otherMostCommonPathHtml
+                }
+              }
+            ]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Duration of qualification",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            name: "new-profession-duration-of-qualification",
+            id: "new-profession-duration-of-qualification",
+            value: data['new-profession-duration-of-qualification']
+          }) }}
+
+          {{ govukRadios({
+            idPrefix: "new-profession-mandatory-professional-experience",
+            name: "new-profession-mandatory-professional-experience",
+            fieldset: {
+              legend: {
+                text: "Existence of mandatory professional experience",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "Select one option."
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "Yes",
+                text: "Yes"
+              }
+            ]
+          }) }}
+
+          {{ govukTextarea({
+            name: "new-profession-qualification-level",
+            id: "new-profession-qualification-level",
+            value: data['new-profession-qualification-level'],
+            classes: "govuk-!-margin-bottom-6",
+            label: {
+              text: "Qualification level",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            }
+          }) }}
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          {{ govukInput({
+            label: {
+              text: "Recognition of qualifications within the UK",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            name: "new-profession-qualification-recognition-within-the-uk",
+            id: "new-profession-qualification-recognition-within-the-uk",
+            value: data['new-profession-qualification-recognition-within-the-uk']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "More about recognition within the UK",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            hint: {
+              text: "Please enter a link"
+            },
+            name: "new-profession-qualification-recognition-within-the-uk-link",
+            id: "new-profession-qualification-recognition-within-the-uk-link",
+            value: data['new-profession-qualification-recognition-within-the-uk-link']
+          }) }}
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          {{ govukInput({
+            label: {
+              text: "Recognition of qualifications from other countries",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            name: "new-profession-qualification-recognition-from-other-countries",
+            id: "new-profession-qualification-recognition-from-other-countries",
+            value: data['new-profession-qualification-recognition-from-other-countries']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "More about recognition from other countries",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            hint: {
+              text: "Please enter a link"
+            },
+            name: "new-profession-qualification-recognition-from-other-countries-link",
+            id: "new-profession-qualification-recognition-from-other-countries-link",
+            value: data['new-profession-qualification-recognition-from-other-countries-link']
+          }) }}
+
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

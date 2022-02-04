@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Adding a new profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <span class="govuk-caption-l">Adding a new profession</span>
+  <h1 class="govuk-heading-xl">
+    Regulations
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="">
+        <form action="ra-adding-a-new-profession-page-4" method="post" class="form">
+
+          {{ govukTextarea({
+            name: "new-profession-regulation-summary",
+            id: "new-profession-regulation-summary",
+            value: data['new-profession-regulation-summary'],
+            classes: "govuk-!-margin-bottom-6",
+            label: {
+              text: "Regulation summary",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            }
+          }) }}
+
+
+          <h2 class="govuk-heading-m">
+            Reserved activities
+          </h2>
+
+          {{ govukDetails({
+            summaryText: "What are reserved activities?",
+            text: "Reserved activities means a form of regulating a profession where the access to a professional activity or group of professional activities is reserved, directly or indirectly, by virtue of legislative, regulatory or administrative provisions to members of a regulated profession holding a specific professional qualification, including where the activity is shared with other regulated professions.",
+            classes: "govuk-!-margin-bottom-2"
+          }) }}
+
+          {{ govukTextarea({
+            name: "new-profession-reserved-activities",
+            id: "new-profession-reserved-activities",
+            value: data['new-profession-reserved-activities'],
+            classes: "govuk-!-margin-bottom-6"
+          }) }}
+
+
+          {{ govukTextarea({
+            name: "new-profession-protected-titles",
+            id: "new-profession-protected-titles",
+            value: data['new-profession-protected-titles'],
+            classes: "govuk-!-margin-bottom-6",
+            label: {
+              text: "Protected titles",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            }
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "More about regulated activities and titles",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            hint: {
+              text: "Please enter a link"
+            },
+            name: "new-profession-regulations-more-link",
+            id: "new-profession-regulations-more-link",
+            value: data['new-profession-regulations-more-link']
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

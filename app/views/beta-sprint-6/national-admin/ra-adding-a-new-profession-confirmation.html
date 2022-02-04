@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirmation of adding a profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          New profession created
+        </h1>
+        <div class="govuk-panel__body">
+          <strong>{{ data['new-profession-title'] }}</strong> has been added
+        </div>
+      </div>
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+      <h2 class="govuk-heading-m">What happens next?</h2>
+      <p class="govuk-body"><a href="professions-listing-2-edit-published">Back to the dashboard</a></p>
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}
