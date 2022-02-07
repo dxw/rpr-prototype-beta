@@ -17,6 +17,17 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
+
+// Site Width
+$site-max-width: 1200px;
+
+// Breakpoints
+$big-screen: $site-max-width;
+$medium-screen: 900px;
+$small-screen: 768px;
+$smaller-screen: 480px;
+$tiny-screen: 340px;
+
 .rpr-internal__page {
   .govuk-header__container {
     border-bottom: 10px solid govuk-colour("yellow");  
@@ -32,6 +43,17 @@ $govuk-assets-path: '/govuk/assets/';
 .rpr-listing__filters-container {
   background-color: govuk-colour("light-grey");
   padding: 1rem;
+}
+
+.rpr-listing__fitlers-details-summary {
+  display: none;
+  @media screen and (max-width: $small-screen) {
+    display: block;
+  }
+}
+.rpr-listing__filters-details-text {
+  border: 0;
+  padding-left: 0;
 }
 
 .rpr-listing__filter {
