@@ -40,6 +40,20 @@ $tiny-screen: 340px;
   }
 }
 
+.rpr-listing__results-found--mobile {
+  display: none;
+  @media screen and (max-width: $small-screen) {
+    display: block;
+  }
+}
+
+.rpr-listing__results-found--desktop {
+  display: block;
+  @media screen and (max-width: $small-screen) {
+    display: none;
+  }
+}
+
 .rpr-listing__filters-container {
   background-color: govuk-colour("light-grey");
   padding: 1rem;

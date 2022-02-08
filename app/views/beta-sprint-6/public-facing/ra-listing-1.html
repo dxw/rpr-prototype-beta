@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Find a regulated profession
+  Find a regulatory authority
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,14 +18,14 @@
 {% block content %}
 
   <h1 class="govuk-heading-xl">
-    Find a regulated profession
+    Find a regulatory authority
   </h1>
 
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-one-third">
 
-      <p class="rpr-listing__results-found--mobile"><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">221</span> professions found.</p>
+      <p class="rpr-listing__results-found--mobile"><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">75</span> authorities found.</p>
 
       <details class="govuk-details rpr-listing__filters-container" data-module="govuk-details" open>
         <summary class="govuk-details__summary rpr-listing__fitlers-details-summary">
@@ -35,12 +35,11 @@
         </summary>
         <div class="govuk-details__text rpr-listing__filters-details-text">
 
-          <form action="professions-listing-2" method="post" class="form">
-            {% from "govuk/components/input/macro.njk" import govukInput %}
+          <form action="ra-listing-2" method="post" class="form">
 
             {{ govukInput({
               label: {
-                text: "Profession that you are looking for",
+                text: "Authority that you are looking for",
                 classes: "govuk-label--s",
                 isPageHeading: true
               },
@@ -48,16 +47,14 @@
               hint: {
                 text: "For example, technology"
               },
-              id: "profession-keyword",
-              name: "profession-keyword",
-              value: data['profession-keyword']
+              id: "ra-keyword",
+              name: "ra-keyword",
+              value: data['ra-keyword']
             }) }}
 
-            {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-
             {{ govukCheckboxes({
-              idPrefix: "profession-nations",
-              name: "profession-nations",
+              idPrefix: "ra-nations",
+              name: "ra-nations",
               classes: "govuk-checkboxes--small rpr-listing__filter",
               fieldset: {
                 legend: {
@@ -73,29 +70,29 @@
                 {
                   value: "england",
                   text: "England",
-                  checked: checked("profession-nations", "england")
+                  checked: checked("ra-nations", "england")
                 },
                 {
                   value: "scotland",
                   text: "Scotland",
-                  checked: checked("profession-nations", "scotland")
+                  checked: checked("ra-nations", "scotland")
                 },
                 {
                   value: "wales",
                   text: "Wales",
-                  checked: checked("profession-nations", "wales")
+                  checked: checked("ra-nations", "wales")
                 },
                 {
                   value: "northern-ireland",
                   text: "Northern Ireland",
-                  checked: checked("profession-nations", "northern-ireland")
+                  checked: checked("ra-nations", "northern-ireland")
                 }
               ]
             }) }}
 
             {{ govukCheckboxes({
-              idPrefix: "profession-industries",
-              name: "profession-industries",
+              idPrefix: "ra-industries",
+              name: "ra-industries",
               classes: "govuk-checkboxes--small rpr-listing__filter",
               fieldset: {
                 legend: {
@@ -111,57 +108,57 @@
                 {
                   value: "construction-engineering",
                   text: "Construction & Engineering",
-                  checked: checked("profession-industries", "construction-engineering")
+                  checked: checked("ra-industries", "construction-engineering")
                 },
                 {
                   value: "education",
                   text: "Education",
-                  checked: checked("profession-industries", "education")
+                  checked: checked("ra-industries", "education")
                 },
                 {
                   value: "finance",
                   text: "Finance",
-                  checked: checked("profession-industries", "finance")
+                  checked: checked("ra-industries", "finance")
                 },
                 {
                   value: "health",
                   text: "Health",
-                  checked: checked("profession-industries", "health")
+                  checked: checked("ra-industries", "health")
                 },
                 {
                   value: "law",
                   text: "Law",
-                  checked: checked("profession-industries", "law")
+                  checked: checked("ra-industries", "law")
                 },
                 {
                   value: "shipping",
                   text: "Shipping",
-                  checked: checked("profession-industries", "shipping")
+                  checked: checked("ra-industries", "shipping")
                 },
                 {
                   value: "other",
                   text: "Other",
-                  checked: checked("profession-industries", "other")
+                  checked: checked("ra-industries", "other")
                 },
                 {
                   value: "security",
                   text: "Security",
-                  checked: checked("profession-industries", "security")
+                  checked: checked("ra-industries", "security")
                 },
                 {
                   value: "transport",
                   text: "Transport",
-                  checked: checked("profession-industries", "transport")
+                  checked: checked("ra-industries", "transport")
                 },
                 {
                   value: "energy",
                   text: "Energy",
-                  checked: checked("profession-industries", "energy")
+                  checked: checked("ra-industries", "energy")
                 },
                 {
                   value: "science",
                   text: "Science",
-                  checked: checked("profession-industries", "science")
+                  checked: checked("ra-industries", "science")
                 }
               ]
             }) }}
@@ -181,34 +178,33 @@
 
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data['profession-keyword'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['profession-keyword'] }}</strong></p>
+      {% if data['ra-keyword'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['ra-keyword'] }}</strong></p>
       {% endif %}
 
-      {% if data['profession-nations'] %}
+      {% if data['ra-nations'] %}
         <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Nations:</span> 
-        {% for nation in data['profession-nations'] %}
+        {% for nation in data['ra-nations'] %}
           <strong class="govuk-tag">{{ nation }}</strong>
         {% endfor %}
         </p>
       {% endif %}
 
-      {% if data['profession-industries'] %}
+      {% if data['ra-industries'] %}
         <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Industries:</span> 
-        {% for industry in data['profession-industries'] %}
+        {% for industry in data['ra-industries'] %}
           <strong class="govuk-tag">{{ industry }}</strong>
         {% endfor %}
         </p>
       {% endif %}
       
-      <p class="rpr-listing__results-found--desktop"><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">221</span> professions found.</p>
-  
+      <p class="rpr-listing__results-found--desktop"><span class="govuk-!-font-size-36 govuk-!-font-weight-bold">75</span> authorities found.</p>
+
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <div class="rpr-listing__profession-container">
+      <div class="rpr-listing__ra-container">
         <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Primary School Teacher (NI)<br>
-            <span class="govuk-caption-l">Northern Ireland</span></a>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="ra-2-capita-gas-registration">Capita Gas Registration and Ancillary Services Ltd</a>
         </h2>
 
         {{ govukSummaryList({
@@ -216,18 +212,32 @@
           rows: [
             {
               key: {
-                text: "Regulators"
+                text: "Nations"
               },
               value: {
-                html: "General Teaching Council for Northern Ireland"
+                html: "United Kingdom"
               }
-            },
+            }
+          ]
+        }) }}
+
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="ra-1-general-medical-council">General Medical Council</a>
+        </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
             {
               key: {
-                text: "Sector"
+                text: "Nations"
               },
               value: {
-                text: "Education"
+                html: "United Kingdom"
               }
             }
           ]
@@ -236,29 +246,19 @@
   
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <div class="rpr-listing__profession-container">
+      <div class="rpr-listing__ra-container">
         <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Primary School Teacher Scotland<br>
-            <span class="govuk-caption-l">Scotland</span></a>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Health and Care Professions Council</a>
         </h2>
-
         {{ govukSummaryList({
           classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
           rows: [
             {
               key: {
-                text: "Regulators"
+                text: "Nations"
               },
               value: {
-                html: "General Teaching Council for Scotland"
-              }
-            },
-            {
-              key: {
-                text: "Sector"
-              },
-              value: {
-                text: "Education"
+                html: "United Kingdom"
               }
             }
           ]
@@ -267,62 +267,19 @@
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <div class="rpr-listing__profession-container">
+      <div class="rpr-listing__ra-container">
         <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Secondary School Teacher NI<br>
-            <span class="govuk-caption-l">Northern Ireland</span></a>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Highways England</a>
         </h2>
-
         {{ govukSummaryList({
           classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
           rows: [
             {
               key: {
-                text: "Regulators"
+                text: "Nations"
               },
               value: {
-                html: "General Teaching Council for Northern Ireland"
-              }
-            },
-            {
-              key: {
-                text: "Sector"
-              },
-              value: {
-                text: "Education"
-              }
-            }
-          ]
-        }) }}
-      </div>
-
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-      <div class="rpr-listing__profession-container">
-        <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-2-registered-gas-engineer">
-            Registered Gas Engineer
-            <span class="govuk-caption-l">United Kingdom</span>
-          </a>
-        </h2>
-
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
-          rows: [
-            {
-              key: {
-                text: "Regulator"
-              },
-              value: {
-                html: "Capita Gas Registration and Ancillary Services Ltd"
-              }
-            },
-            {
-              key: {
-                text: "Sector"
-              },
-              value: {
-                text: "Construction & Engineering"
+                html: "England"
               }
             }
           ]
@@ -331,31 +288,19 @@
   
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <div class="rpr-listing__profession-container">
+      <div class="rpr-listing__ra-container">
         <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-1-plastic-surgery">
-            Plastic Surgery
-            <span class="govuk-caption-l">United Kingdom</span>
-          </a>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institute for Learning</a>
         </h2>
-
         {{ govukSummaryList({
           classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
           rows: [
             {
               key: {
-                text: "Regulator"
+                text: "Nations"
               },
               value: {
-                html: "General Medical Council"
-              }
-            },
-            {
-              key: {
-                text: "Sector"
-              },
-              value: {
-                text: "Health"
+                html: "United Kingdom"
               }
             }
           ]
@@ -364,64 +309,19 @@
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <div class="rpr-listing__profession-container">
+      <div class="rpr-listing__ra-container">
         <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="profession-3-nuclear-medicine">
-            Nuclear Medicine
-            <span class="govuk-caption-l">United Kingdom</span>
-          </a>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institute of Chartered Accountants in England and Wales</a>
         </h2>
-
         {{ govukSummaryList({
           classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
           rows: [
             {
               key: {
-                text: "Regulator"
+                text: "Nations"
               },
               value: {
-                html: "General Medical Council"
-              }
-            },
-            {
-              key: {
-                text: "Sector"
-              },
-              value: {
-                text: "Health"
-              }
-            }
-          ]
-        }) }}
-      </div>
-
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-      <div class="rpr-listing__profession-container">
-        <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">
-            Insolvency Practitioner<br>
-            <span class="govuk-caption-l">Northern Ireland</span>
-          </a>
-        </h2>
-
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
-          rows: [
-            {
-              key: {
-                text: "Regulators"
-              },
-              value: {
-                html: "Association of Chartered Certified Accountants, The Law Society of Northern Ireland"
-              }
-            },
-            {
-              key: {
-                text: "Sector"
-              },
-              value: {
-                text: "Law"
+                html: "England, Wales"
               }
             }
           ]
@@ -430,34 +330,129 @@
   
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <div class="rpr-listing__profession-container">
+      <div class="rpr-listing__ra-container">
         <h2>
-          <a class="govuk-link govuk-heading-l rpr-listing__profession-title" href="#">Insolvency Practitioner<br>
-            <span class="govuk-caption-l">England and Wales</span></a>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institute of Chartered Accountants of Scotland</a>
         </h2>
-
         {{ govukSummaryList({
           classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
           rows: [
             {
               key: {
-                text: "Regulators"
+                text: "Nations"
               },
               value: {
-                html: "Institute or Chartered Accountants, Insolvency Practitioners Association"
-              }
-            },
-            {
-              key: {
-                text: "Sector"
-              },
-              value: {
-                text: "Law"
+                html: "Scotland"
               }
             }
           ]
         }) }}
-      </div>      
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institute of Marine Engineering Science and Technology</a>
+        </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                html: "United Kingdom"
+              }
+            }
+          ]
+        }) }}
+      </div>
+  
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Institution of Electrical Engineers</a>
+        </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                html: "United Kingdom"
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Law Society of England and Wales</a>
+        </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                html: "England, Wales"
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Master of the Faculties</a>
+        </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                html: "United Kingdom"
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="rpr-listing__ra-container">
+        <h2>
+          <a class="govuk-link govuk-heading-m rpr-listing__ra-title" href="#">Office for Rail and Road</a>
+        </h2>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border rpr-listing__profession-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Nations"
+              },
+              value: {
+                html: "England, Scotland, Wales"
+              }
+            }
+          ]
+        }) }}
+      </div>
 
     </div>
 
