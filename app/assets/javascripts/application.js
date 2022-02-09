@@ -9,10 +9,10 @@ $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 
   if (window.screen.width < 480) {
-    document.getElementsByClassName('rpr-listing__filters-container')[0].removeAttribute("open");
+    document.getElementsByClassName('rpr-listing__filters-container rpr-listing__filters--searched')[0].removeAttribute("open");
   };
 
   if (window.screen.width >= 480) {
-    document.getElementsByClassName('rpr-listing__filters-container')[0].addAttribute("open");
+    document.getElementsByClassName('rpr-listing__filters-container rpr-listing__filters--searched')[0].addAttribute("open");
   };
 })
