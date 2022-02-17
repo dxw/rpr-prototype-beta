@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Adding a new profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <span class="govuk-caption-l">Adding a new profession</span>
+  <h1 class="govuk-heading-xl">
+    Legislation
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="">
+        <form action="ra-adding-a-new-profession-page-5" method="post" class="form">
+
+          {{ govukInput({
+            label: {
+              text: "Legislation title",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            name: "new-profession-legislation-title",
+            id: "new-profession-legislation-title",
+            value: data['new-profession-legislation-title']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Legislation link",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            hint: {
+              text: "Please enter a link"
+            },
+            name: "new-profession-legislation-link",
+            id: "new-profession-legislation-link",
+            value: data['new-profession-legislation-link']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Second legislation title (optional)",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            name: "new-profession-legislation-title-2",
+            id: "new-profession-legislation-title-2",
+            value: data['new-profession-legislation-title-2']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Second legislation link (optional)",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            hint: {
+              text: "Please enter a link"
+            },
+            name: "new-profession-legislation-link-2",
+            id: "new-profession-legislation-link-2",
+            value: data['new-profession-legislation-link-2']
+          }) }}
+
+
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

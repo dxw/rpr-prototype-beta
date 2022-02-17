@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Adding a new profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <span class="govuk-caption-l">Adding a new profession</span>
+  <h1 class="govuk-heading-xl">
+    Regulators
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="">
+        <form action="ra-adding-a-new-profession-page-3" method="post" class="form">
+
+          {{ govukSelect({
+            label: {
+              text: "Which body regulates this profession?",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "",
+            id: "new-profession-regulator-1",
+            name: "new-profession-regulator-1",
+            value: data['new-profession-regulator-1'],
+            items: [
+              {
+                value: "Architects Registration Board",
+                text: "Architects Registration Board"
+              },
+              {
+                value: "Association of Chartered Certified Accountants",
+                text: "Association of Chartered Certified Accountants"
+              },
+              {
+                value: "Chartered Institute of Arbitrators",
+                text: "Chartered Institute of Arbitrators"
+              },
+              {
+                value: "Chartered Institute of Housing",
+                text: "Chartered Institute of Housing"
+              },
+              {
+                value: "Environment Agency",
+                text: "Environment Agency"
+              },
+              {
+                value: "Fire Industry Association",
+                text: "Fire Industry Association"
+              },
+              {
+                value: "General Medical Council",
+                text: "General Medical Council"
+              },
+              {
+                value: "General Teaching Council for Scotland",
+                text: "General Teaching Council for Scotland"
+              },
+              {
+                value: "Insolvency Practicioners Association",
+                text: "Insolvency Practicioners Association"
+              },
+              {
+                value: "Institute of Measurement and Control",
+                text: "Institute of Measurement and Control"
+              },
+              {
+                value: "Institution of Civil Engineers",
+                text: "Institution of Civil Engineers"
+              },
+              {
+                value: "Intellectual Property Regulation Board",
+                text: "Intellectual Property Regulation Board"
+              }
+            ]
+          }) }}
+
+
+          {{ govukSelect({
+            label: {
+              text: "Is there another regulator associated with this profession?",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            classes: "",
+            id: "new-profession-regulator-2",
+            name: "new-profession-regulator-2",
+            value: data['new-profession-regulator-2'],
+            items: [
+              {
+                value: "No second regulator",
+                text: "No second regulator"
+              },
+              {
+                value: "Architects Registration Board",
+                text: "Architects Registration Board"
+              },
+              {
+                value: "Association of Chartered Certified Accountants",
+                text: "Association of Chartered Certified Accountants"
+              },
+              {
+                value: "Chartered Institute of Arbitrators",
+                text: "Chartered Institute of Arbitrators"
+              },
+              {
+                value: "Chartered Institute of Housing",
+                text: "Chartered Institute of Housing"
+              },
+              {
+                value: "Environment Agency",
+                text: "Environment Agency"
+              },
+              {
+                value: "Fire Industry Association",
+                text: "Fire Industry Association"
+              },
+              {
+                value: "General Medical Council",
+                text: "General Medical Council"
+              },
+              {
+                value: "General Teaching Council for Scotland",
+                text: "General Teaching Council for Scotland"
+              },
+              {
+                value: "Insolvency Practicioners Association",
+                text: "Insolvency Practicioners Association"
+              },
+              {
+                value: "Institute of Measurement and Control",
+                text: "Institute of Measurement and Control"
+              },
+              {
+                value: "Institution of Civil Engineers",
+                text: "Institution of Civil Engineers"
+              },
+              {
+                value: "Intellectual Property Regulation Board",
+                text: "Intellectual Property Regulation Board"
+              }
+            ]
+          }) }}
+
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

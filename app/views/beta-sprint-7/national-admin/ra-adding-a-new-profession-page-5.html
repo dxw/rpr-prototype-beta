@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Adding a new profession
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <span class="govuk-caption-l">Adding a new profession</span>
+  <h1 class="govuk-heading-xl">
+    Registration
+  </h1>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="">
+        <form action="ra-adding-a-new-profession-page-6" method="post" class="form">
+
+          {{ govukRadios({
+            idPrefix: "new-profession-registration-is",
+            name: "new-profession-registration-is",
+            fieldset: {
+              legend: {
+                text: "Is registration mandatory with regulators",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "Select one option."
+            },
+            items: [
+              {
+                value: "Mandatory",
+                text: "Mandatory"
+              },
+              {
+                value: "Voluntary",
+                text: "Voluntary"
+              },
+              {
+                value: "Unknown",
+                text: "Unknown"
+              }
+            ]
+          }) }}
+
+
+          {{ govukInput({
+            label: {
+              text: "Registration requirements",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            name: "new-profession-registration-requirements",
+            id: "new-profession-registration-requirements",
+            value: data['new-profession-registration-requirements']
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "More about registration",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            },
+            hint: {
+              text: "Please enter a link"
+            },
+            name: "new-profession-more-about-registration-link",
+            id: "new-profession-more-about-registration-link",
+            value: data['new-profession-more-about-registration-link']
+          }) }}
+
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third"></div>
+
+  </div>
+
+{% endblock %}

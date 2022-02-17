@@ -87,9 +87,28 @@ $tiny-screen: 340px;
   }
 }
 
+.rpr-internal-listing__manage-professions-container {
+  margin: 0;
+}
+
+.rpr-internal-listing__manage-professions-container-left {
+  float: left;
+  @media screen and (max-width: $small-screen) {
+    float: none;
+  }
+}
+
+.rpr-internal-listing__manage-professions-container-right {
+  float: right;
+  @media screen and (max-width: $small-screen) {
+    float: none;
+  }
+}
+
 .rpr-internal-listing__filters-container {
   background-color: govuk-colour("light-grey");
   padding: 1rem;
+  clear: both;
 
   .govuk-details__text {
     border: 0;
