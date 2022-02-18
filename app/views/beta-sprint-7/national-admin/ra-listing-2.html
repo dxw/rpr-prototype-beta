@@ -4,6 +4,39 @@
   Regulatory authorities
 {% endblock %}
 
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "index",
+        text: "Home"
+      },
+      {
+        href: "professions-listing-1",
+        text: "Professions"
+      },
+      {
+        href: "ra-listing-1",
+        text: "Regulators",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Users"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% set bodyClasses = "rpr-internal__listing rpr-internal__page" %}
 
 {% block beforeContent %}

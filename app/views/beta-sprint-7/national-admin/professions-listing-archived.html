@@ -4,6 +4,39 @@
   Search for a regulated profession
 {% endblock %}
 
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "index",
+        text: "Home"
+      },
+      {
+        href: "professions-listing-1",
+        text: "Professions",
+        active: true
+      },
+      {
+        href: "ra-listing-1",
+        text: "Regulators"
+      },
+      {
+        href: "#",
+        text: "Users"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
 {% set bodyClasses = "rpr-internal__listing rpr-internal__page" %}
 
 {% block beforeContent %}

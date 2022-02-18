@@ -51,14 +51,25 @@
         }) }}
       </form>
 
-      <div>
-        <a href="beta-sprint-7/national-admin/" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
-          Login as an national admin
-          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" role="presentation" focusable="false">
-            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-          </svg>
-        </a>
-      </div>
+      <form action="beta-sprint-7/national-admin/" method="post" class="form">
+        <input class="govuk-checkboxes__input" id="profession-status" name="profession-status" type="checkbox" value="Published" type="hidden" checked>
+        <input class="govuk-checkboxes__input" id="profession-status" name="profession-status" type="checkbox" value="Draft" type="hidden" checked>
+        <input class="govuk-checkboxes__input" id="profession-status" name="profession-status" type="checkbox" value="Archived" type="hidden">
+        {{ govukButton({
+          text: "Login as an national admin",
+          classes: "govuk-button--start"
+        }) }}
+      </form>
+
+      <form action="beta-sprint-7/regulator/" method="post" class="form">
+        <input class="govuk-checkboxes__input" id="profession-status" name="profession-status" type="checkbox" value="Published" type="hidden" checked>
+        <input class="govuk-checkboxes__input" id="profession-status" name="profession-status" type="checkbox" value="Draft" type="hidden" checked>
+        <input class="govuk-checkboxes__input" id="profession-status" name="profession-status" type="checkbox" value="Archived" type="hidden">
+        {{ govukButton({
+          text: "Login as an regulator admin",
+          classes: "govuk-button--start"
+        }) }}
+      </form>
 
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
