@@ -1,0 +1,369 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  College Lecturer
+{% endblock %}
+
+{% set bodyClasses = "" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        College Lecturer<br>
+        <span class="govuk-caption-l">Scotland</span>
+      </h1>
+      
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Regulators"
+            },
+            value: {
+              html: "General Teaching Council for Scotland"
+            }
+          },
+          {
+            key: {
+              text: "Sectors"
+            },
+            value: {
+              text: "Education"
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Regulators
+      </h2>
+
+      <div class="rpr-details__sub-group">
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Regulator"
+              },
+              value: {
+                html: '<a class="govuk-link" href="#">General Teaching Council for Scotland</a>'
+              }
+            },
+            {
+              key: {
+                text: "Website"
+              },
+              value: {
+                text: "N/A"
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                text: "N/A"
+              }
+            },         
+            {
+              key: {
+                text: "Phone number"
+              },
+              value: {
+                text: "+44 161 923 6602"
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                html: '350 Euston Road</br>London</br>NW1 3JN'
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Regulation
+      </h2>
+
+      <h3 class="govuk-heading-s">
+        Regulation summary
+      </h3>
+      <p class="govuk-body">
+        A major proportion of the workload involves dealing with urgent or emergency cases including: â€¢ Hand trauma. â€¢ Burns and scalds â€¢ Soft tissue injuries involving face, trunk or limbs. Elective surgery includes the following major areas: â€¢ Head and neck. This includes excisional and reconstructive surgery for congenital and acquired abnormalities, and for malignancy involving the face and mouth. â€¢ Cleft lip and palate and other craniofacial abnormalities. â€¢ Breast: including surgery for reconstruction, reduction and augmentation. â€¢ Hand and upper limb: including congenital and acquired conditions. â€¢ Skin and soft tissue tumours. â€¢ Congenital and acquired deformities of the trunk and urogenital system. â€¢ Aesthetic or cosmetic surgery.
+      </p>
+
+      <h3 class="govuk-heading-s">
+        Reserved activities
+      </h3>
+      <p class="govuk-body">
+        [no data]
+      </p>
+
+      <h3 class="govuk-heading-s">
+        Protected titles
+      </h3>
+      <p class="govuk-body">
+        [no data]
+      </p>
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "More about regulated activities and titles"
+            },
+            value: {
+              html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Qualifications and experience
+      </h2>
+
+      <div class="rpr-details__sub-group">
+
+        <h3 class="govuk-heading-m rpr-details__sub-group-title">
+          New professionals
+        </h3>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Methods to obtain qualification"
+              },
+              value: {
+                text: "Vocational post-secondary education level"
+              }
+            },
+            {
+              key: {
+                text: "Most common path to obtain qualification"
+              },
+              value: {
+                text: "Vocational post-secondary education level"
+              }
+            },
+            {
+              key: {
+                text: "Duration of qualification"
+              },
+              value: {
+                text: "7.0 Year"
+              }
+            },
+            {
+              key: {
+                text: "Existence of mandatory professional experience"
+              },
+              value: {
+                text: "Yes"
+              }
+            },
+            {
+              key: {
+                text: "Qualification level"
+              },
+              value: {
+                text: "PSM - Diploma from post-secondary level (more than 4 years) , Art. 11 e"
+              }
+            },
+            {
+              key: {
+                text: "More about becoming qualified"
+              },
+              value: {
+                html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <div class="rpr-details__sub-group">
+
+        <h3 class="govuk-heading-m rpr-details__sub-group-title">
+          Professionals from other UK nations
+        </h3>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Recognition of qualifications within the UK"
+              },
+              value: {
+                text: "Vocational post-secondary education level"
+              }
+            },
+            {
+              key: {
+                text: "More about recognition within the UK"
+              },
+              value: {
+                html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <div class="rpr-details__sub-group">
+
+        <h3 class="govuk-heading-m rpr-details__sub-group-title">
+          Professionals from other countries
+        </h3>
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Recognition of qualifications from other countries"
+              },
+              value: {
+                text: "Vocational post-secondary education level"
+              }
+            },
+            {
+              key: {
+                text: "More about recognition from other countries"
+              },
+              value: {
+                html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+              }
+            }
+          ]
+        }) }}
+      </div>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Registration
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Registration is"
+            },
+            value: {
+              text: "Mandatory"
+            }
+          },
+          {
+            key: {
+              text: "Registration requirements"
+            },
+            value: {
+              text: "[no data]"
+            }
+          },
+          {
+            key: {
+              text: "More about registration"
+            },
+            value: {
+              html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+            }
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m rpr-details__section-title">
+        Legislation
+      </h2>
+
+      <div class="rpr-details__sub-group">
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Legislation title"
+              },
+              value: {
+                text: "Medical Act 1983"
+              }
+            },
+            {
+              key: {
+                text: "Legislation link"
+              },
+              value: {
+                html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <div class="rpr-details__sub-group">
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border',
+          rows: [
+            {
+              key: {
+                text: "Legislation title"
+              },
+              value: {
+                text: "Medical Act 1984"
+              }
+            },
+            {
+              key: {
+                text: "Legislation link"
+              },
+              value: {
+                html: '<a class="govuk-link" href="http://www.legislation.gov.uk/ukpga/1983/54/contents">http://www.legislation.gov.uk/ukpga/1983/54/contents</a>'
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+              
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}

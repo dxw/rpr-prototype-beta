@@ -166,6 +166,13 @@ $tiny-screen: 340px;
   padding-left: 0.5em;
 }
 
+.rpr-details__tab-title {
+  display: none;
+  @media screen and (max-width: $small-screen) {
+    display: block;
+  }
+}
+
 .rpr-internal-listing__sort-container {
   margin: 1em 0;
 }
