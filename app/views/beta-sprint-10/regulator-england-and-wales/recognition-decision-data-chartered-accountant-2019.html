@@ -1,0 +1,217 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Recognition decision data - Chartered Accountant 
+{% endblock %}
+
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "index",
+        text: "Home"
+      },
+      {
+        href: "professions-listing-1",
+        text: "Regulated professions"
+      },
+      {
+        href: "#",
+        text: "Regulatory authorities"
+      },
+      {
+        href: "recognition-data-1",
+        text: "Recognition data"
+      },
+      {
+        href: "#",
+        text: "Manage Users"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-xl">
+        Recognition decision data
+        <span class="govuk-caption-l">Chartered Accountant - United Kingdom</span>
+      </h1>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border rpr-decision-data__overview',
+        rows: [
+          {
+            key: {
+              text: "Regulator"
+            },
+            value: {
+              html: '<ul class="govuk-list">
+                        <li>Institute of Chartered Accountants in England and Wales</li>
+                    </ul>'
+            }
+          },
+          {
+            key: {
+              text: "Year"
+            },
+            value: {
+              text: "2019"
+            }
+          }
+        ]
+      }) }}
+
+
+      <h3 class="govuk-heading-m">Route #1</h3>
+      <table class="govuk-table rpr-decision-data__table-container">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">France</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Italy</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Australia</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="govuk-heading-m">Route #2</h3>
+      <table class="govuk-table rpr-decision-data__table-container">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">France</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Italy</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Australia</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <div class="govuk-grid-column-one-quarter">
+
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+        <h2 class="govuk-heading-s">
+          Status<br>
+          <span class="govuk-body">Published</span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Last modified<br>
+          <span class="govuk-body">05-01-2020</span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Changed by<br>
+          <span class="govuk-body">Jane Jones</span><br>
+          <span class="govuk-body"><a href="#">janejones@icaew.com</a></span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Currently published version<br>
+          <span class="govuk-body"><a href="/beta-sprint-10/public-facing/recognition-decision-data-chartered-accountant-2019" class="govuk-link">Public facing link</a></span>
+        </h2>
+
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list">
+            <li>
+              <form action="ra-amending-a-profession-start" method="post" class="form">
+                {{ govukButton({
+                  text: "Edit data",
+                  classes: "govuk-button--secondary"
+                }) }}
+              </form>
+            </li>
+            <li>
+              {{ govukButton({
+                text: "Archive data",
+                classes: "govuk-button--warning"
+              }) }}
+            </li>
+          </ul>
+        </nav>
+
+
+      </aside>
+
+    </div>
+
+  </div>
+
+{% endblock %}

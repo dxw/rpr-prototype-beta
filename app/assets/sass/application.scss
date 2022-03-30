@@ -173,6 +173,16 @@ $tiny-screen: 340px;
   }
 }
 
+.rpr-decision-data__overview {
+  .govuk-summary-list__key, .govuk-summary-list__value {
+    padding: 3px 0;
+  }
+}
+
+.rpr-decision-data__table-container {
+  overflow-x: auto;
+}
+
 .rpr-internal-listing__sort-container {
   margin: 1em 0;
 }

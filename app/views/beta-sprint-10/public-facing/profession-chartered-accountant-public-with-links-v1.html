@@ -1,46 +1,10 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Registered Gas Engineer
+  Chartered Accountant
 {% endblock %}
 
-{% block header %}
-  {# Set serviceName in config.js. #}
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceName: serviceName,
-    serviceUrl: "/",
-    containerClasses: "govuk-width-container",
-    navigation: [
-      {
-        href: "index",
-        text: "Home"
-      },
-      {
-        href: "professions-listing-1",
-        text: "Regulated professions"
-      },
-      {
-        href: "#",
-        text: "Regulatory authorities"
-      },
-      {
-        href: "recognition-data-1",
-        text: "Recognition data"
-      },
-      {
-        href: "#",
-        text: "Manage Users"
-      },
-      {
-        href: "#",
-        text: "Sign out"
-      }
-    ]
-  }) }}
-{% endblock %}
-
-{% set bodyClasses = "rpr-internal__page" %}
+{% set bodyClasses = "" %}
 
 {% block beforeContent %}
   {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
@@ -511,87 +475,26 @@
         rows: [
           {
             key: {
-              text: "Year"
+              text: "Recognition decision data"
             },
             value: {
-              html: '<a class="govuk-link" href="/beta-sprint-10/regulator-england-and-wales/recognition-decision-data-chartered-accountant-2020">2020 - Institute of Chartered Accountants in England and Wales</a>'
-            }
-          },
-          {
-            key: {
-              text: "Year"
-            },
-            value: {
-              html: '<a class="govuk-link" href="/beta-sprint-10/regulator-scotland/recognition-decision-data-chartered-accountant-2020">2020 - Institute of Chartered Accountants in Scotland</a>'
-            }
-          },
-          {
-            key: {
-              text: "Year"
-            },
-            value: {
-              html: '<a class="govuk-link" href="/beta-sprint-10/regulator-england-and-wales/recognition-decision-data-chartered-accountant-2019">2019 - Institute of Chartered Accountants in England and Wales</a>'
+              html: '<a class="govuk-link" href="recognition-decision-data-chartered-accountant-v1">Decision data page</a>'
             }
           }
         ]
       }) }}
 
+
     </div>
+
 
     <div class="govuk-grid-column-one-third">
 
       <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
               
-        <h2 class="govuk-heading-s">
-          Status<br>
-          <span class="govuk-body">Published</span>
-        </h2>
-
-        <h2 class="govuk-heading-s">
-          Last modified<br>
-          <span class="govuk-body">16-12-2021</span>
-        </h2>
-
-        <h2 class="govuk-heading-s">
-          Changed by<br>
-          <span class="govuk-body">Jane Jones</span><br>
-          <span class="govuk-body"><a href="#">janejones@icaew.com</a></span>
-        </h2>
-
-        <h2 class="govuk-heading-s">
-          Currently published version<br>
-          <span class="govuk-body"><a href="/beta-sprint-10/public-facing/profession-chartered-accountant-public" class="govuk-link">Public facing link</a></span>
-        </h2>
-        
-        <nav role="navigation" aria-labelledby="subsection-title">
-
-          <ul class="govuk-list">
-            <li>
-              <form action="ra-amending-a-profession-start" method="post" class="form">
-                <input name="amend-profession-title" value="Registered Gas Engineer" type="hidden">
-                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="england" type="hidden" checked>
-                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="scotland" type="hidden" checked>
-                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="wales" type="hidden" checked>
-                <input class="govuk-checkboxes__input" id="amend-profession-nations" name="amend-profession-nations" type="checkbox" value="northern-ireland" type="hidden" checked>
-                <input class="govuk-checkboxes__input" id="amend-profession-industries" name="amend-profession-industries" type="checkbox" value="Construction & Engineering" type="hidden" checked>
-                {{ govukButton({
-                  text: "Edit this profession",
-                  classes: "govuk-button--secondary"
-                }) }}
-              </form>
-            </li>
-            <li>
-              {{ govukButton({
-                text: "Delete this profession",
-                classes: "govuk-button--warning"
-              }) }}
-            </li>
-          </ul>
-        </nav>
       </aside>
 
     </div>
-    
   </div>
 
 {% endblock %}
