@@ -69,9 +69,13 @@
           <h2 class="govuk-heading-l">
             Manage existing decision data
           </h2>
-          <p class="govuk-body">To add new recognition decision data, please go to <a class="govuk-link" href="professions-listing-1">regulated professions</a> and choose the profession you want.</p>
         </div>
         <div class="rpr-internal-listing__manage-professions-container-right">
+          <form action="ra-adding-a-new-profession-page-1" method="post" class="form">
+            {{ govukButton({
+              text: "Add new decision data"
+            }) }}
+          </form>
         </div>
       </div>
 
