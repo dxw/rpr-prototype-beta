@@ -88,9 +88,8 @@
         ]
       }) }}
 
-
-      <h3 class="govuk-heading-m">Route #1</h3>
       <table class="govuk-table rpr-decision-data__table-container">
+        <caption class="govuk-table__caption govuk-table__caption--l">Route 1</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Country of qualification</th>
@@ -125,8 +124,8 @@
         </tbody>
       </table>
 
-      <h3 class="govuk-heading-m">Route #2</h3>
       <table class="govuk-table rpr-decision-data__table-container">
+        <caption class="govuk-table__caption govuk-table__caption--l">Route 2</caption>
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Country of qualification</th>
@@ -191,7 +190,49 @@
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list">
             <li>
-              <form action="ra-amending-a-profession-start" method="post" class="form">
+              <form action="recognition-decision-data-chartered-accountant-2020-edit" method="post" class="form">
+                <input name="decision-data-regulator" id="decision-data-regulator" value="Institute of Chartered Accountants in England and Wales" type="hidden">
+                <input name="decision-data-profession" id="decision-data-profession" value="Chartered Accountant" type="hidden">
+                <input name="decision-data-year" id="decision-data-year" value="2020" type="hidden">
+                <input name="decision-data-route-1" id="decision-data-route-1" value="Route 1" type="hidden">
+                <input name="decision-data-route-1-country-1" id="decision-data-route-1-country-1" value="France" type="hidden">
+                <input name="decision-data-route-1-country-1-yes" id="decision-data-route-1-country-1-yes" value="3" type="hidden">
+                <input name="decision-data-route-1-country-1-yes-2" id="decision-data-route-1-country-1-yes-2" value="1" type="hidden">
+                <input name="decision-data-route-1-country-1-no" id="decision-data-route-1-country-1-no" value="0" type="hidden">
+                <input name="decision-data-route-1-country-1-no-2" id="decision-data-route-1-country-1-no-2" value="0" type="hidden">
+
+                <input name="decision-data-route-1-country-2" id="decision-data-route-1-country-2" value="Italy" type="hidden">
+                <input name="decision-data-route-1-country-2-yes" id="decision-data-route-1-country-2-yes" value="3" type="hidden">
+                <input name="decision-data-route-1-country-2-yes-2" id="decision-data-route-1-country-2-yes-2" value="0" type="hidden">
+                <input name="decision-data-route-1-country-2-no" id="decision-data-route-1-country-2-no" value="1" type="hidden">
+                <input name="decision-data-route-1-country-2-no-2" id="decision-data-route-1-country-2-no-2" value="0" type="hidden">
+
+                <input name="decision-data-route-1-country-3" id="decision-data-route-1-country-3" value="United States of America" type="hidden">
+                <input name="decision-data-route-1-country-3-yes" id="decision-data-route-1-country-3-yes" value="0" type="hidden">
+                <input name="decision-data-route-1-country-3-yes-2" id="decision-data-route-1-country-3-yes-2" value="1" type="hidden">
+                <input name="decision-data-route-1-country-3-no" id="decision-data-route-1-country-3-no" value="0" type="hidden">
+                <input name="decision-data-route-1-country-3-no-2" id="decision-data-route-1-country-3-no-2" value="0" type="hidden">
+
+                <input name="decision-data-route-2" id="decision-data-route-2" value="Route 2" type="hidden">
+                <input name="decision-data-route-2-country-1" id="decision-data-route-2-country-1" value="France" type="hidden">
+                <input name="decision-data-route-2-country-1-yes" id="decision-data-route-2-country-1-yes" value="3" type="hidden">
+                <input name="decision-data-route-2-country-1-yes-2" id="decision-data-route-2-country-1-yes-2" value="1" type="hidden">
+                <input name="decision-data-route-2-country-1-no" id="decision-data-route-2-country-1-no" value="0" type="hidden">
+                <input name="decision-data-route-2-country-1-no-2" id="decision-data-route-2-country-1-no-2" value="0" type="hidden">
+
+                <input name="decision-data-route-2-country-2" id="decision-data-route-2-country-2" value="Italy" type="hidden">
+                <input name="decision-data-route-2-country-2-yes" id="decision-data-route-2-country-2-yes" value="3" type="hidden">
+                <input name="decision-data-route-2-country-2-yes-2" id="decision-data-route-2-country-2-yes-2" value="0" type="hidden">
+                <input name="decision-data-route-2-country-2-no" id="decision-data-route-2-country-2-no" value="1" type="hidden">
+                <input name="decision-data-route-2-country-2-no-2" id="decision-data-route-2-country-2-no-2" value="0" type="hidden">
+
+                <input name="decision-data-route-2-country-3" id="decision-data-route-2-country-3" value="United States of America" type="hidden">
+                <input name="decision-data-route-2-country-3-yes" id="decision-data-route-2-country-3-yes" value="0" type="hidden">
+                <input name="decision-data-route-2-country-3-yes-2" id="decision-data-route-2-country-3-yes-2" value="1" type="hidden">
+                <input name="decision-data-route-2-country-3-no" id="decision-data-route-2-country-3-no" value="0" type="hidden">
+                <input name="decision-data-route-2-country-3-no-2" id="decision-data-route-2-country-3-no-2" value="0" type="hidden">
+
+                
                 {{ govukButton({
                   text: "Edit data",
                   classes: "govuk-button--secondary"

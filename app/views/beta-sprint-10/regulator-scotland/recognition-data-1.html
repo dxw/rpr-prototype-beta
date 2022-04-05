@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Search for a regulated profession
+  Search for recognition decision data
 {% endblock %}
 
 {% block header %}
@@ -71,7 +71,7 @@
           </h2>
         </div>
         <div class="rpr-internal-listing__manage-professions-container-right">
-          <form action="ra-adding-a-new-profession-page-1" method="post" class="form">
+          <form action="#" method="post" class="form">
             {{ govukButton({
               text: "Add new decision data"
             }) }}
@@ -91,7 +91,7 @@
           <form action="#" method="post" class="form">
 
             <div class="govuk-grid-row">
-              <div class="govuk-grid-column-one-quarter">
+              <div class="govuk-grid-column-one-third">
                 {{ govukInput({
                   label: {
                     text: "Keyword",
@@ -108,157 +108,7 @@
                 }) }}
               </div>
 
-              <div class="govuk-grid-column-one-quarter">
-                {{ govukCheckboxes({
-                  idPrefix: "profession-nations",
-                  name: "profession-nations",
-                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
-                  fieldset: {
-                    legend: {
-                      text: "Nations",
-                      isPageHeading: true,
-                      classes: "govuk-fieldset__legend--s"
-                    }
-                  },
-                  hint: {
-                    text: "Select all that apply."
-                  },
-                  items: [
-                    {
-                      value: "england",
-                      text: "England",
-                      checked: checked("profession-nations", "england")
-                    },
-                    {
-                      value: "scotland",
-                      text: "Scotland",
-                      checked: checked("profession-nations", "scotland")
-                    },
-                    {
-                      value: "wales",
-                      text: "Wales",
-                      checked: checked("profession-nations", "wales")
-                    },
-                    {
-                      value: "northern-ireland",
-                      text: "Northern Ireland",
-                      checked: checked("profession-nations", "northern-ireland")
-                    }
-                  ]
-                }) }}
-              </div>
-
-              <div class="govuk-grid-column-one-quarter">
-                {{ govukCheckboxes({
-                  idPrefix: "profession-regulators",
-                  name: "profession-regulators",
-                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
-                  fieldset: {
-                    legend: {
-                      text: "Regulators",
-                      isPageHeading: true,
-                      classes: "govuk-fieldset__legend--s"
-                    }
-                  },
-                  hint: {
-                    text: "Select all that apply."
-                  },
-                  items: [
-                    {
-                      value: "General Medicine Council",
-                      text: "General Medicine Council",
-                      checked: checked("profession-regulators", "General Medicine Council")
-                    },
-                    {
-                      value: "Capita Gas Registration and Ancillary Services Ltd",
-                      text: "Capita Gas Registration and Ancillary Services Ltd",
-                      checked: checked("profession-regulators", "Capita Gas Registration and Ancillary Services Ltd")
-                    },
-                    {
-                      value: "Education Workforce Council",
-                      text: "Education Workforce Council",
-                      checked: checked("profession-regulators", "Education Workforce Council")
-                    }
-                  ]
-                }) }}
-              </div>
-
-              <div class="govuk-grid-column-one-quarter">
-                {{ govukCheckboxes({
-                  idPrefix: "profession-industries",
-                  name: "profession-industries",
-                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
-                  fieldset: {
-                    legend: {
-                      text: "Sectors",
-                      isPageHeading: true,
-                      classes: "govuk-fieldset__legend--s"
-                    }
-                  },
-                  hint: {
-                    text: "Select all that apply."
-                  },
-                  items: [
-                    {
-                      value: "construction-engineering",
-                      text: "Construction & Engineering",
-                      checked: checked("profession-industries", "construction-engineering")
-                    },
-                    {
-                      value: "education",
-                      text: "Education",
-                      checked: checked("profession-industries", "education")
-                    },
-                    {
-                      value: "finance",
-                      text: "Finance",
-                      checked: checked("profession-industries", "finance")
-                    },
-                    {
-                      value: "health",
-                      text: "Health",
-                      checked: checked("profession-industries", "health")
-                    },
-                    {
-                      value: "law",
-                      text: "Law",
-                      checked: checked("profession-industries", "law")
-                    },
-                    {
-                      value: "shipping",
-                      text: "Shipping",
-                      checked: checked("profession-industries", "shipping")
-                    },
-                    {
-                      value: "other",
-                      text: "Other",
-                      checked: checked("profession-industries", "other")
-                    },
-                    {
-                      value: "security",
-                      text: "Security",
-                      checked: checked("profession-industries", "security")
-                    },
-                    {
-                      value: "transport",
-                      text: "Transport",
-                      checked: checked("profession-industries", "transport")
-                    },
-                    {
-                      value: "energy",
-                      text: "Energy",
-                      checked: checked("profession-industries", "energy")
-                    },
-                    {
-                      value: "science",
-                      text: "Science",
-                      checked: checked("profession-industries", "science")
-                    }
-                  ]
-                }) }}
-              </div>
-
-              <div class="govuk-grid-column-one-quarter">
+              <div class="govuk-grid-column-one-third">
                 {{ govukCheckboxes({
                   idPrefix: "profession-status",
                   name: "profession-status",
@@ -292,6 +142,10 @@
                   ]
                 }) }}
               </div>
+
+              <div class="govuk-grid-column-one-third">
+              </div>
+
 
             </div>
 
@@ -356,6 +210,13 @@
         </p>
       {% endif %}
 
+      <div class="rpr-internal-listing__download-container govuk-inset-text">
+        <p class="govuk-body">You can download the decision data of the following professions and years in bulk:</p>
+        {{ govukButton({
+          text: "Download data"
+        }) }}
+      </div>
+      
       <div class="rpr-internal-listing__sort-container">
         <div class="rpr-internal-listing__sort-container-left govuk-body">
           <span class="govuk-!-font-size-36 govuk-!-font-weight-bold">1</span> decision data found.

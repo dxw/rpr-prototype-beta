@@ -183,6 +183,41 @@ $tiny-screen: 340px;
   overflow-x: auto;
 }
 
+.rpr-decision-data__table-editing {
+
+  .govuk-table__caption {
+    background-color: govuk-colour("light-grey");
+    padding: 1rem;
+  }
+
+  .govuk-table__head {
+
+    .govuk-table__header {
+      border-bottom: 0;   
+    }
+  } 
+
+  .govuk-table__body {
+
+    .govuk-table__cell {
+      border-bottom: 0;   
+    }
+    
+    .govuk-form-group {
+      margin-bottom: 0;
+    }
+
+    .govuk-button {
+      margin-bottom: 0;
+    }
+
+  }
+}
+
+.rpr-internal-listing__download-container {
+  margin: 2em 0 2em 0;
+}
+
 .rpr-internal-listing__sort-container {
   margin: 1em 0;
 }
