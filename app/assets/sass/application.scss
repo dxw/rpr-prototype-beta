@@ -188,6 +188,18 @@ $tiny-screen: 340px;
   .govuk-table__caption {
     background-color: govuk-colour("light-grey");
     padding: 1rem;
+
+    .rpr-decision-data__head-container-left {
+      float: left;
+      width: 70%;
+    }
+
+    .rpr-decision-data__head-container-right {
+      float: right;
+      width: 30%;
+      text-align: right;
+      padding-top: 5px;
+    }
   }
 
   .govuk-table__head {
@@ -195,6 +207,7 @@ $tiny-screen: 340px;
     .govuk-table__header {
       border-bottom: 0;   
     }
+
   } 
 
   .govuk-table__body {

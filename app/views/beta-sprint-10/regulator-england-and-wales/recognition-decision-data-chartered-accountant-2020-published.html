@@ -1,0 +1,227 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Recognition decision data - Chartered Accountant 
+{% endblock %}
+
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "index",
+        text: "Home"
+      },
+      {
+        href: "professions-listing-1",
+        text: "Regulated professions"
+      },
+      {
+        href: "#",
+        text: "Regulatory authorities"
+      },
+      {
+        href: "recognition-data-1",
+        text: "Recognition data"
+      },
+      {
+        href: "#",
+        text: "Manage Users"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-three-quarters">
+
+      {% set html %}
+        <p class="govuk-notification-banner__heading">
+          Data is published.
+          <a class="govuk-notification-banner__link" href="recognition-data-1">Back to the recognition decision data listing page.</a>.
+        </p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+
+      <h1 class="govuk-heading-xl">
+        Recognition decision data
+        <span class="govuk-caption-l">{{data['decision-data-profession']}} - United Kingdom</span>
+      </h1>
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border rpr-decision-data__overview',
+        rows: [
+          {
+            key: {
+              text: "Regulator"
+            },
+            value: {
+              html: data['decision-data-regulator']
+            }
+          },
+          {
+            key: {
+              text: "Year"
+            },
+            value: {
+              text: data['decision-data-year']
+            }
+          }
+        ]
+      }) }}
+
+      <table class="govuk-table rpr-decision-data__table-container">
+        <caption class="govuk-table__caption govuk-table__caption--l">{{data['decision-data-route-1']}}</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-1']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-1-yes']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-1-yes-2']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-1-no']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-1-no-2']}}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-2']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-2-yes']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-2-yes-2']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-2-no']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-2-no-2']}}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-3']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-3-yes']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-3-yes-2']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-3-no']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-1-country-3-no-2']}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="govuk-table rpr-decision-data__table-container">
+        <caption class="govuk-table__caption govuk-table__caption--l">{{data['decision-data-route-2']}}</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-1']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-1-yes']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-1-yes-2']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-1-no']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-1-no-2']}}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-2']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-2-yes']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-2-yes-2']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-2-no']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-2-no-2']}}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-3']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-3-yes']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-3-yes-2']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-3-no']}}</td>
+            <td class="govuk-table__cell">{{data['decision-data-route-2-country-3-no-2']}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <div class="govuk-grid-column-one-quarter">
+
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+        <h2 class="govuk-heading-s">
+          Status<br>
+          <span class="govuk-body"><strong class="govuk-tag govuk-tag--turquoise">Published</strong></span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Last modified<br>
+          <span class="govuk-body">16-01-2021</span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Changed by<br>
+          <span class="govuk-body">Jane Jones</span><br>
+          <span class="govuk-body"><a href="#">janejones@icaew.com</a></span>
+        </h2>
+
+        <h2 class="govuk-heading-s">
+          Currently published version<br>
+          <span class="govuk-body"><a href="/beta-sprint-10/public-facing/recognition-decision-data-chartered-accountant-2020" class="govuk-link">Public facing link</a></span>
+        </h2>
+
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list">
+            <li>
+          <form method="post" class="form">
+            <ul class="govuk-list">
+              <li>
+                <button class="govuk-button govuk-button--secondary" formaction="recognition-decision-data-chartered-accountant-2020-edit">Edit data</button>
+              </li>
+              <li>
+                <button class="govuk-button govuk-button--warning" formaction="#">Archive data</button>
+              </li>
+              <li>
+                <button class="govuk-button" formaction="#">Download data</button>
+              </li>
+            </ul>
+          </form>
+          </ul>
+        </nav>
+
+
+      </aside>
+
+    </div>
+
+  </div>
+
+{% endblock %}
