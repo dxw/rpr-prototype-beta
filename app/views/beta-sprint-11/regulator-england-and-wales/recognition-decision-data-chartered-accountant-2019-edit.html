@@ -1,0 +1,875 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Recognition decision data - Chartered Accountant 
+{% endblock %}
+
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "index",
+        text: "Home"
+      },
+      {
+        href: "professions-listing-1",
+        text: "Regulated professions"
+      },
+      {
+        href: "#",
+        text: "Regulatory authorities"
+      },
+      {
+        href: "recognition-data-1",
+        text: "Recognition data"
+      },
+      {
+        href: "#",
+        text: "Manage Users"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" class="form">
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">Editing recognition decision data</span>
+        Recognition decision data
+      </h1>
+
+      {{ govukSelect({
+        label: {
+          text: "Regulator",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        classes: "",
+        id: "decision-data-regulator",
+        name: "decision-data-regulator",
+        value: data['decision-data-regulator'],
+        items: [
+          {
+            value: "Institute of Chartered Accountants in England and Wales",
+            text: "Institute of Chartered Accountants in England and Wales",
+            selected: data['decision-data-regulator'] == "Institute of Chartered Accountants in England and Wales"
+          }
+        ]
+      }) }}
+
+      {{ govukSelect({
+        label: {
+          text: "Profession",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        classes: "",
+        id: "decision-data-profession",
+        name: "decision-data-profession",
+        value: data['decision-data-profession'],
+        items: [
+          {
+            value: "Administration of Oaths",
+            text: "Administration of Oaths",
+            selected: data['decision-data-profession'] == "Administration of Oaths"
+          },
+          {
+            value: "Chartered Accountant",
+            text: "Chartered Accountant",
+            selected: data['decision-data-profession'] == "Chartered Accountant"
+          },
+          {
+            value: "Insolvency Practitioner",
+            text: "Insolvency Practitioner",
+            selected: data['decision-data-profession'] == "Insolvency Practitioner"
+          },
+          {
+            value: "Local Public Audit",
+            text: "Local Public Audit",
+            selected: data['decision-data-profession'] == "Local Public Audit"
+          },
+          {
+            value: "Probate Practitioner (non-contentious probate)",
+            text: "Probate Practitioner (non-contentious probate)",
+            selected: data['decision-data-profession'] == "Probate Practitioner (non-contentious probate)"
+          },
+          {
+            value: "Statutory Audit",
+            text: "Statutory Audit",
+            selected: data['decision-data-profession'] == "Statutory Audit"
+          }
+        ]
+      }) }}
+
+      {{ govukSelect({
+        label: {
+          text: "Year",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        classes: "",
+        id: "decision-data-year",
+        name: "decision-data-year",
+        value: data['decision-data-year'],
+        items: [
+          {
+            value: "2019",
+            text: "2019",
+            selected: data['decision-data-year'] == "2019"
+          },
+          {
+            value: "2020",
+            text: "2020",
+            selected: data['decision-data-year'] == "2020"
+          },
+          {
+            value: "2021",
+            text: "2021",
+            selected: data['decision-data-year'] == "2021"
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <table class="govuk-table rpr-decision-data__table-container rpr-decision-data__table-editing">
+        <caption class="govuk-table__caption govuk-table__caption--l">
+          <h1 class="govuk-label--m">Route</h1>
+          <div class="rpr-decision-data__head-container-left">
+            {{ govukInput({
+              id: "decision-data-route-1",
+              name: "decision-data-route-1",
+              value: data['decision-data-route-1']
+            }) }}
+          </div>
+          <div class="rpr-decision-data__head-container-right">
+            {{ govukButton({
+              text: "Delete this route",
+              classes: "govuk-button--warning"
+            }) }}
+          </div>
+        </caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              {{ govukSelect({
+                classes: "",
+                id: "decision-data-route-1-country-1",
+                name: "decision-data-route-1-country-1",
+                value: data['decision-data-route-1-country-1'],
+                items: [
+                  {
+                    value: "Argentina",
+                    text: "Argentina",
+                    selected: data['decision-data-route-1-country-1'] == "Argentina"
+                  },
+                  {
+                    value: "Australia",
+                    text: "Australia",
+                    selected: data['decision-data-route-1-country-1'] == "Australia"
+                  },
+                  {
+                    value: "Austria",
+                    text: "Austria",
+                    selected: data['decision-data-route-1-country-1'] == "Austria"
+                  },
+                  {
+                    value: "Belgium",
+                    text: "Belgium",
+                    selected: data['decision-data-route-1-country-1'] == "Belgium"
+                  },
+                  {
+                    value: "Brazil",
+                    text: "Brazil",
+                    selected: data['decision-data-route-1-country-1'] == "Brazil"
+                  },
+                  {
+                    value: "Canada",
+                    text: "Canada",
+                    selected: data['decision-data-route-1-country-1'] == "Canada"
+                  },
+                  {
+                    value: "Denmark",
+                    text: "Denmark",
+                    selected: data['decision-data-route-1-country-1'] == "Denmark"
+                  },
+                  {
+                    value: "France",
+                    text: "France",
+                    selected: data['decision-data-route-1-country-1'] == "France"
+                  },
+                  {
+                    value: "Germany",
+                    text: "Germany",
+                    selected: data['decision-data-route-1-country-1'] == "Germany"
+                  },
+                  {
+                    value: "India",
+                    text: "India",
+                    selected: data['decision-data-route-1-country-1'] == "India"
+                  },
+                  {
+                    value: "Ireland",
+                    text: "Ireland",
+                    selected: data['decision-data-route-1-country-1'] == "Ireland"
+                  },
+                  {
+                    value: "Italy",
+                    text: "Italy",
+                    selected: data['decision-data-route-1-country-1'] == "Italy"
+                  },
+                  {
+                    value: "Japan",
+                    text: "Japan",
+                    selected: data['decision-data-route-1-country-1'] == "Japan"
+                  },
+                  {
+                    value: "Luxembourg",
+                    text: "Luxembourg",
+                    selected: data['decision-data-route-1-country-1'] == "Luxembourg"
+                  },
+                  {
+                    value: "New Zealand",
+                    text: "New Zealand",
+                    selected: data['decision-data-route-1-country-1'] == "New Zealand"
+                  },
+                  {
+                    value: "Poland",
+                    text: "Poland",
+                    selected: data['decision-data-route-1-country-1'] == "Poland"
+                  },
+                  {
+                    value: "Singapore",
+                    text: "Singapore",
+                    selected: data['decision-data-route-1-country-1'] == "Singapore"
+                  },
+                  {
+                    value: "Spain",
+                    text: "Spain",
+                    selected: data['decision-data-route-1-country-1'] == "Spain"
+                  },
+                  {
+                    value: "Switzerland",
+                    text: "Switzerland",
+                    selected: data['decision-data-route-1-country-1'] == "Switzerland"
+                  },
+                  {
+                    value: "United States of America",
+                    text: "United States of America",
+                    selected: data['decision-data-route-1-country-1'] == "United States of America"
+                  }
+                ]
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-1-yes",
+                name: "decision-data-route-1-country-1-yes",
+                value: data['decision-data-route-1-country-1-yes']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-1-yes-2",
+                name: "decision-data-route-1-country-1-yes-2",
+                value: data['decision-data-route-1-country-1-yes-2']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-1-no",
+                name: "decision-data-route-1-country-1-no",
+                value: data['decision-data-route-1-country-1-no']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-1-no-2",
+                name: "decision-data-route-1-country-1-no-2",
+                value: data['decision-data-route-1-country-1-no-2']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukButton({
+                text: "Delete",
+                classes: "govuk-button--warning"
+              }) }}
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell govuk-!-width-one-quarter">
+              {{ govukSelect({
+                classes: "",
+                id: "decision-data-route-1-country-2",
+                name: "decision-data-route-1-country-2",
+                value: data['decision-data-route-1-country-2'],
+                items: [
+                  {
+                    value: "Argentina",
+                    text: "Argentina",
+                    selected: data['decision-data-route-1-country-2'] == "Argentina"
+                  },
+                  {
+                    value: "Australia",
+                    text: "Australia",
+                    selected: data['decision-data-route-1-country-2'] == "Australia"
+                  },
+                  {
+                    value: "Austria",
+                    text: "Austria",
+                    selected: data['decision-data-route-1-country-2'] == "Austria"
+                  },
+                  {
+                    value: "Belgium",
+                    text: "Belgium",
+                    selected: data['decision-data-route-1-country-2'] == "Belgium"
+                  },
+                  {
+                    value: "Brazil",
+                    text: "Brazil",
+                    selected: data['decision-data-route-1-country-2'] == "Brazil"
+                  },
+                  {
+                    value: "Canada",
+                    text: "Canada",
+                    selected: data['decision-data-route-1-country-2'] == "Canada"
+                  },
+                  {
+                    value: "Denmark",
+                    text: "Denmark",
+                    selected: data['decision-data-route-1-country-2'] == "Denmark"
+                  },
+                  {
+                    value: "France",
+                    text: "France",
+                    selected: data['decision-data-route-1-country-2'] == "France"
+                  },
+                  {
+                    value: "Germany",
+                    text: "Germany",
+                    selected: data['decision-data-route-1-country-2'] == "Germany"
+                  },
+                  {
+                    value: "India",
+                    text: "India",
+                    selected: data['decision-data-route-1-country-2'] == "India"
+                  },
+                  {
+                    value: "Ireland",
+                    text: "Ireland",
+                    selected: data['decision-data-route-1-country-2'] == "Ireland"
+                  },
+                  {
+                    value: "Italy",
+                    text: "Italy",
+                    selected: data['decision-data-route-1-country-2'] == "Italy"
+                  },
+                  {
+                    value: "Japan",
+                    text: "Japan",
+                    selected: data['decision-data-route-1-country-2'] == "Japan"
+                  },
+                  {
+                    value: "Luxembourg",
+                    text: "Luxembourg",
+                    selected: data['decision-data-route-1-country-2'] == "Luxembourg"
+                  },
+                  {
+                    value: "New Zealand",
+                    text: "New Zealand",
+                    selected: data['decision-data-route-1-country-2'] == "New Zealand"
+                  },
+                  {
+                    value: "Poland",
+                    text: "Poland",
+                    selected: data['decision-data-route-1-country-2'] == "Poland"
+                  },
+                  {
+                    value: "Singapore",
+                    text: "Singapore",
+                    selected: data['decision-data-route-1-country-2'] == "Singapore"
+                  },
+                  {
+                    value: "Spain",
+                    text: "Spain",
+                    selected: data['decision-data-route-1-country-2'] == "Spain"
+                  },
+                  {
+                    value: "Switzerland",
+                    text: "Switzerland",
+                    selected: data['decision-data-route-1-country-2'] == "Switzerland"
+                  },
+                  {
+                    value: "United States of America",
+                    text: "United States of America",
+                    selected: data['decision-data-route-1-country-2'] == "United States of America"
+                  }
+                ]
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-2-yes",
+                name: "decision-data-route-1-country-2-yes",
+                value: data['decision-data-route-1-country-2-yes']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-2-yes-2",
+                name: "decision-data-route-1-country-2-yes-2",
+                value: data['decision-data-route-1-country-2-yes-2']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-2-no",
+                name: "decision-data-route-1-country-2-no",
+                value: data['decision-data-route-1-country-2-no']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-2-no-2",
+                name: "decision-data-route-1-country-2-no-2",
+                value: data['decision-data-route-1-country-2-no-2']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukButton({
+                text: "Delete",
+                classes: "govuk-button--warning"
+              }) }}
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell govuk-!-width-one-quarter">
+              {{ govukSelect({
+                classes: "",
+                id: "decision-data-route-1-country-3",
+                name: "decision-data-route-1-country-3",
+                value: data['decision-data-route-1-country-3'],
+                items: [
+                  {
+                    value: "Argentina",
+                    text: "Argentina",
+                    selected: data['decision-data-route-1-country-3'] == "Argentina"
+                  },
+                  {
+                    value: "Australia",
+                    text: "Australia",
+                    selected: data['decision-data-route-1-country-3'] == "Australia"
+                  },
+                  {
+                    value: "Austria",
+                    text: "Austria",
+                    selected: data['decision-data-route-1-country-3'] == "Austria"
+                  },
+                  {
+                    value: "Belgium",
+                    text: "Belgium",
+                    selected: data['decision-data-route-1-country-3'] == "Belgium"
+                  },
+                  {
+                    value: "Brazil",
+                    text: "Brazil",
+                    selected: data['decision-data-route-1-country-3'] == "Brazil"
+                  },
+                  {
+                    value: "Canada",
+                    text: "Canada",
+                    selected: data['decision-data-route-1-country-3'] == "Canada"
+                  },
+                  {
+                    value: "Denmark",
+                    text: "Denmark",
+                    selected: data['decision-data-route-1-country-3'] == "Denmark"
+                  },
+                  {
+                    value: "France",
+                    text: "France",
+                    selected: data['decision-data-route-1-country-3'] == "France"
+                  },
+                  {
+                    value: "Germany",
+                    text: "Germany",
+                    selected: data['decision-data-route-1-country-3'] == "Germany"
+                  },
+                  {
+                    value: "India",
+                    text: "India",
+                    selected: data['decision-data-route-1-country-3'] == "India"
+                  },
+                  {
+                    value: "Ireland",
+                    text: "Ireland",
+                    selected: data['decision-data-route-1-country-3'] == "Ireland"
+                  },
+                  {
+                    value: "Italy",
+                    text: "Italy",
+                    selected: data['decision-data-route-1-country-3'] == "Italy"
+                  },
+                  {
+                    value: "Japan",
+                    text: "Japan",
+                    selected: data['decision-data-route-1-country-3'] == "Japan"
+                  },
+                  {
+                    value: "Luxembourg",
+                    text: "Luxembourg",
+                    selected: data['decision-data-route-1-country-3'] == "Luxembourg"
+                  },
+                  {
+                    value: "New Zealand",
+                    text: "New Zealand",
+                    selected: data['decision-data-route-1-country-3'] == "New Zealand"
+                  },
+                  {
+                    value: "Poland",
+                    text: "Poland",
+                    selected: data['decision-data-route-1-country-3'] == "Poland"
+                  },
+                  {
+                    value: "Singapore",
+                    text: "Singapore",
+                    selected: data['decision-data-route-1-country-3'] == "Singapore"
+                  },
+                  {
+                    value: "Spain",
+                    text: "Spain",
+                    selected: data['decision-data-route-1-country-3'] == "Spain"
+                  },
+                  {
+                    value: "Switzerland",
+                    text: "Switzerland",
+                    selected: data['decision-data-route-1-country-3'] == "Switzerland"
+                  },
+                  {
+                    value: "United States of America",
+                    text: "United States of America",
+                    selected: data['decision-data-route-1-country-3'] == "United States of America"
+                  }
+                ]
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-3-yes",
+                name: "decision-data-route-1-country-3-yes",
+                value: data['decision-data-route-1-country-3-yes']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-3-yes-2",
+                name: "decision-data-route-1-country-3-yes-2",
+                value: data['decision-data-route-1-country-3-yes-2']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-3-no",
+                name: "decision-data-route-1-country-3-no",
+                value: data['decision-data-route-1-country-3-no']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-1-country-3-no-2",
+                name: "decision-data-route-1-country-3-no-2",
+                value: data['decision-data-route-1-country-3-no-2']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukButton({
+                text: "Delete",
+                classes: "govuk-button--warning"
+              }) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {{ govukButton({
+        text: "Add new country",
+        classes: "govuk-button--secondary rpr-internal-listing__filter-button"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <table class="govuk-table rpr-decision-data__table-container rpr-decision-data__table-editing">
+        <caption class="govuk-table__caption govuk-table__caption--l">
+          <h1 class="govuk-label--m">Route</h1>
+          <div class="rpr-decision-data__head-container-left">
+            {{ govukInput({
+              id: "decision-data-route-2",
+              name: "decision-data-route-2",
+              value: data['decision-data-route-2']
+            }) }}
+          </div>
+          <div class="rpr-decision-data__head-container-right">
+            {{ govukButton({
+              text: "Delete this route",
+              classes: "govuk-button--warning"
+            }) }}
+          </div>
+        </caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              {{ govukSelect({
+                classes: "",
+                id: "decision-data-route-2-country-1",
+                name: "decision-data-route-2-country-1",
+                value: data['decision-data-route-2-country-1'],
+                items: [
+                  {
+                    value: "Argentina",
+                    text: "Argentina",
+                    selected: data['decision-data-route-2-country-1'] == "Argentina"
+                  },
+                  {
+                    value: "Australia",
+                    text: "Australia",
+                    selected: data['decision-data-route-2-country-1'] == "Australia"
+                  },
+                  {
+                    value: "Austria",
+                    text: "Austria",
+                    selected: data['decision-data-route-2-country-1'] == "Austria"
+                  },
+                  {
+                    value: "Belgium",
+                    text: "Belgium",
+                    selected: data['decision-data-route-2-country-1'] == "Belgium"
+                  },
+                  {
+                    value: "Brazil",
+                    text: "Brazil",
+                    selected: data['decision-data-route-2-country-1'] == "Brazil"
+                  },
+                  {
+                    value: "Canada",
+                    text: "Canada",
+                    selected: data['decision-data-route-2-country-1'] == "Canada"
+                  },
+                  {
+                    value: "Denmark",
+                    text: "Denmark",
+                    selected: data['decision-data-route-2-country-1'] == "Denmark"
+                  },
+                  {
+                    value: "France",
+                    text: "France",
+                    selected: data['decision-data-route-2-country-1'] == "France"
+                  },
+                  {
+                    value: "Germany",
+                    text: "Germany",
+                    selected: data['decision-data-route-2-country-1'] == "Germany"
+                  },
+                  {
+                    value: "India",
+                    text: "India",
+                    selected: data['decision-data-route-2-country-1'] == "India"
+                  },
+                  {
+                    value: "Ireland",
+                    text: "Ireland",
+                    selected: data['decision-data-route-2-country-1'] == "Ireland"
+                  },
+                  {
+                    value: "Italy",
+                    text: "Italy",
+                    selected: data['decision-data-route-2-country-1'] == "Italy"
+                  },
+                  {
+                    value: "Japan",
+                    text: "Japan",
+                    selected: data['decision-data-route-2-country-1'] == "Japan"
+                  },
+                  {
+                    value: "Luxembourg",
+                    text: "Luxembourg",
+                    selected: data['decision-data-route-2-country-1'] == "Luxembourg"
+                  },
+                  {
+                    value: "New Zealand",
+                    text: "New Zealand",
+                    selected: data['decision-data-route-2-country-1'] == "New Zealand"
+                  },
+                  {
+                    value: "Poland",
+                    text: "Poland",
+                    selected: data['decision-data-route-2-country-1'] == "Poland"
+                  },
+                  {
+                    value: "Singapore",
+                    text: "Singapore",
+                    selected: data['decision-data-route-2-country-1'] == "Singapore"
+                  },
+                  {
+                    value: "Spain",
+                    text: "Spain",
+                    selected: data['decision-data-route-2-country-1'] == "Spain"
+                  },
+                  {
+                    value: "Switzerland",
+                    text: "Switzerland",
+                    selected: data['decision-data-route-2-country-1'] == "Switzerland"
+                  },
+                  {
+                    value: "United States of America",
+                    text: "United States of America",
+                    selected: data['decision-data-route-2-country-1'] == "United States of America"
+                  }
+                ]
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-2-country-1-yes",
+                name: "decision-data-route-2-country-1-yes",
+                value: data['decision-data-route-2-country-1-yes']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-2-country-1-yes-2",
+                name: "decision-data-route-2-country-1-yes-2",
+                value: data['decision-data-route-2-country-1-yes-2']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-2-country-1-no",
+                name: "decision-data-route-2-country-1-no",
+                value: data['decision-data-route-2-country-1-no']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukInput({
+                classes: "",
+                id: "decision-data-route-2-country-1-no-2",
+                name: "decision-data-route-2-country-1-no-2",
+                value: data['decision-data-route-2-country-1-no-2']
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              {{ govukButton({
+                text: "Delete",
+                classes: "govuk-button--warning"
+              }) }}
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      {{ govukButton({
+        text: "Add new country",
+        classes: "govuk-button--secondary rpr-internal-listing__filter-button"
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+      {{ govukButton({
+        text: "Add new route",
+        classes: "govuk-button--secondary govuk-button--start rpr-internal-listing__filter-button"
+      }) }}
+
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+
+      <aside class="app-related-items rpr-internal__details-page-sidebar" role="complementary">
+        
+
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list">
+            <li>
+              <button class="govuk-button govuk-button--secondary" formaction="recognition-decision-data-chartered-accountant-2019-draft">Save as draft</button>
+            </li>
+            <li>
+              <button class="govuk-button" formaction="recognition-decision-data-chartered-accountant-2019-published">Publish to register</button>
+            </li>
+          </ul>
+        </nav>
+
+
+      </aside>
+
+    </div>
+
+  </div>
+
+  </form>
+
+{% endblock %}

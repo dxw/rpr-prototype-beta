@@ -1,0 +1,374 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Search for recognition decision data
+{% endblock %}
+
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "index",
+        text: "Home"
+      },
+      {
+        href: "professions-listing-1",
+        text: "Regulated professions"
+      },
+      {
+        href: "#",
+        text: "Regulatory authorities"
+      },
+      {
+        href: "recognition-data-1",
+        text: "Recognition data",
+        active: true
+      },
+      {
+        href: "#",
+        text: "Manage Users"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__listing rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-l">Department for Business, Energy & Industrial Strategy</span>
+    Recognition decision data
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="rpr-internal-listing__manage-professions-container">
+        <div class="rpr-internal-listing__manage-professions-container-left">
+          <h2 class="govuk-heading-l">
+            Manage existing decision data
+          </h2>
+        </div>
+        <div class="rpr-internal-listing__manage-professions-container-right">
+          <form action="#" method="post" class="form">
+            {{ govukButton({
+              text: "Add new decision data"
+            }) }}
+          </form>
+        </div>
+      </div>
+
+      <div class="rpr-internal-listing__filters-container">
+
+      <details class="govuk-details rpr-listing__filters-container" data-module="govuk-details">
+        <summary class="govuk-details__summary rpr-listing__fitlers-details-summary">
+          <span class="govuk-details__summary-text">
+            Show filters
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <form action="recognition-data-1-filtered-published" method="post" class="form">
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-third">
+                {{ govukInput({
+                  label: {
+                    text: "Keyword",
+                    classes: "govuk-label--s",
+                    isPageHeading: true
+                  },
+                  classes: "",
+                  hint: {
+                    text: "For example, RP155, nuclear"
+                  },
+                  id: "profession-keyword",
+                  name: "profession-keyword",
+                  value: data['profession-keyword']
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-third">
+                {{ govukCheckboxes({
+                  idPrefix: "profession-status",
+                  name: "profession-status",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Status",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "Published",
+                      text: "Published",
+                      checked: checked("profession-status", "Published")
+                    },
+                    {
+                      value: "Draft",
+                      text: "Draft",
+                      checked: checked("profession-status", "Draft")
+                    },
+                    {
+                      value: "Archived",
+                      text: "Archived",
+                      checked: checked("profession-status", "Archived")
+                    }
+                  ]
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-third">
+              </div>
+            </div>
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                {{ govukButton({
+                  text: "Filter results",
+                  classes: "govuk-button--secondary rpr-internal-listing__filter-button"
+                }) }}
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </details>
+
+
+
+      </div>
+
+      <!--div class="govuk-!-padding-bottom-6"></div-->
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full govuk-!-margin-top-6">
+
+      {% if data['profession-keyword'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['profession-keyword'] }}</strong></p>
+      {% endif %}
+
+      {% if data['profession-nations'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Nations:</span> 
+        {% for nation in data['profession-nations'] %}
+          <strong class="govuk-tag">{{ nation }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      {% if data['profession-regulators'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Regulators:</span> 
+        {% for regulator in data['profession-regulators'] %}
+          <strong class="govuk-tag">{{ regulator }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+      
+      {% if data['profession-industries'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Sectors:</span> 
+        {% for industry in data['profession-industries'] %}
+          <strong class="govuk-tag">{{ industry }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      {% if data['profession-status'] %}
+        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Status:</span> 
+        {% for status in data['profession-status'] %}
+          <strong class="govuk-tag">{{ status }}</strong>
+        {% endfor %}
+        </p>
+      {% endif %}
+
+      <div class="rpr-internal-listing__download-container govuk-inset-text">
+        <p class="govuk-body">You can download the decision data of the following professions and years in bulk:</p>
+        {{ govukButton({
+          text: "Download data"
+        }) }}
+      </div>
+
+
+      <div class="rpr-internal-listing__sort-container">
+        <div class="rpr-internal-listing__sort-container-left govuk-body">
+          <span class="govuk-!-font-size-36 govuk-!-font-weight-bold">6</span> data sets found.
+        </div>
+      </div>
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Profession"
+          },
+          {
+            text: "Regulator"
+          },
+          {
+            text: "Year"
+          },
+          {
+            text: "Last modified"
+          },
+          {
+            text: "Status"
+          },
+          {
+            text: "Actions"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Optometrist"
+            },
+            {
+              text: "General Optical Council"
+            },
+            {
+              text: "2021"
+            },
+            {
+              text: "10-02-2022"
+            },
+            {
+              text: "Draft"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Chartered Accountant"
+            },
+            {
+              text: "Institute of Chartered Accountants in England and Wales"
+            },
+            {
+              text: "2020"
+            },
+            {
+              text: "16-01-2021"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="/beta-sprint-10/regulator-england-and-wales/recognition-decision-data-chartered-accountant-2020">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Chartered Accountant"
+            },
+            {
+              text: "Institute of Chartered Accountants in Scotland"
+            },
+            {
+              text: "2020"
+            },
+            {
+              text: "17-01-2021"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="/beta-sprint-10/regulator-scotland/recognition-decision-data-chartered-accountant-2020">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Chartered Accountant"
+            },
+            {
+              text: "Institute of Chartered Accountants in England and Wales"
+            },
+            {
+              text: "2019"
+            },
+            {
+              text: "05-01-2020"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="/beta-sprint-10/regulator-england-and-wales/recognition-decision-data-chartered-accountant-2019">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Dispensing Optician"
+            },
+            {
+              text: "General Optical Council"
+            },
+            {
+              text: "2020"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ],
+          [
+            {
+              text: "Optometrist"
+            },
+            {
+              text: "General Optical Council"
+            },
+            {
+              text: "2020"
+            },
+            {
+              text: "16-12-2021"
+            },
+            {
+              text: "Published"
+            },
+            {
+              html: '<a class="govuk-link" href="#">View details</a>'
+            }
+          ]
+        ]
+      }) }}
+    </div>
+
+  </div>
+
+{% endblock %}

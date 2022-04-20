@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Home
+{% endblock %}
+
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "index",
+        text: "Home",
+        active: true
+      },
+      {
+        href: "professions-listing-1",
+        text: "Regulated professions"
+      },
+      {
+        href: "#",
+        text: "Regulatory authorities"
+      },
+      {
+        href: "recognition-data-1",
+        text: "Recognition data"
+      },
+      {
+        href: "#",
+        text: "Manage Users"
+      },
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% set bodyClasses = "rpr-internal__listing rpr-internal__page" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">Department for Business, Energy & Industrial Strategy</span>
+        Sam Smith
+      </h1>
+
+      <h2 class="govuk-heading-m">What can you do from this page</h2>
+      <ul class="govuk-list">
+        <li><a href="professions-listing-1">Edit information about the professions you regulate</a></li>
+        <li><a href="ra-listing-1">Edit information about your regulator</a></li>
+        <li><a href="recognition-data-1">Edit recognition data</a></li>
+        <li><a href="#">Manage access to this service</a></li>
+      </ul>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+    </div>
+
+  </div>
+
+{% endblock %}

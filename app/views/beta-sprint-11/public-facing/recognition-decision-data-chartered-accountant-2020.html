@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Recognition decision data - Chartered Accountant 
+{% endblock %}
+
+{% set bodyClasses = "" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-quarter">
+
+      <aside class="rpr-internal__details-page-sidebar" role="complementary">
+        <h2 class="govuk-heading-s">
+          Regulators
+        </h2>
+
+        <ul class="govuk-list">
+            <li><a class="govuk-link" href="#regulator-1">Institute of Chartered Accountants in England and Wales</a></li>
+            <li><a class="govuk-link" href="#regulator-2">Institute of Chartered Accountants in Scotland</a></li>
+        </ul>
+      </aside>
+
+    </div>
+
+    <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-xl">
+        Recognition decision data
+        <span class="govuk-caption-l">Chartered Accountant - United Kingdom</span>
+      </h1>
+
+      <h2 class="govuk-heading-l">2020</h2>
+
+      <h3 class="govuk-heading-m" id="regulator-1">Institute of Chartered Accountants in England and Wales - EEA Route</h3>
+      <table class="govuk-table rpr-decision-data__table-container">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">France</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Italy</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Spain</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="govuk-heading-m">Institute of Chartered Accountants in England and Wales - International Route</h3>
+      <table class="govuk-table rpr-decision-data__table-container">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Australia</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Switzerland</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">United States of America</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="govuk-heading-m" id="regulator-2">Institute of Chartered Accountants in Scotland - EEA Route</h3>
+      <table class="govuk-table rpr-decision-data__table-container">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Country of qualification</th>
+            <th scope="col" class="govuk-table__header">Yes</th>
+            <th scope="col" class="govuk-table__header">Yes (after compensatory measure)</th>
+            <th scope="col" class="govuk-table__header">No</th>
+            <th scope="col" class="govuk-table__header">No (after compensatory measure)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Denmark</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Italy</td>
+            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Ireland</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell">0</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+
+  </div>
+
+{% endblock %}
