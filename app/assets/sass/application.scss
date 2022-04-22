@@ -40,8 +40,11 @@ $tiny-screen: 340px;
   }
 }
 
-.rpr-internal__details-page-file-download {
-  margin-top: 2em;
+.rpr-internal__details-page-file-download-container {
+  border: 1px solid govuk-colour("black");
+  padding: 0.5em 0.8em 0 0;
+  display: inline-block;
+  margin-bottom: 1.5em;
 }
 
 .rpr-internal__details-page-file-download-link {
@@ -50,7 +53,7 @@ $tiny-screen: 340px;
   background-repeat: no-repeat;
   background-size: 40px 40px;
   min-height: 2.5em;
-  padding: 0 0 0 50px;
+  padding: 8px 0 0 50px;
 }
 
 .rpr-listing__results-found--mobile {
@@ -122,6 +125,7 @@ $tiny-screen: 340px;
   background-color: govuk-colour("light-grey");
   padding: 1rem;
   clear: both;
+  margin-bottom: 2em;
 
   .govuk-details__text {
     border: 0;
@@ -142,6 +146,10 @@ $tiny-screen: 340px;
   margin-bottom: 10px;
   background-color: govuk-colour("black");
   color: govuk-colour("white");
+}
+
+.rpr-listing__search-criteria {
+  margin-bottom: 2em;
 }
 
 .rpr-listing__search-criteria-container {

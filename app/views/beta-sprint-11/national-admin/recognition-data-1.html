@@ -81,17 +81,20 @@
 
       <div class="rpr-internal-listing__filters-container">
 
-      <details class="govuk-details rpr-listing__filters-container" data-module="govuk-details">
-        <summary class="govuk-details__summary rpr-listing__fitlers-details-summary">
+      <!--details class="govuk-details rpr-listing__filters-container" data-module="govuk-details"-->
+        <!--summary class="govuk-details__summary rpr-listing__fitlers-details-summary">
           <span class="govuk-details__summary-text">
             Show filters
           </span>
-        </summary>
-        <div class="govuk-details__text">
+        </summary-->
+        <!--div class="govuk-details__text"-->
+
+          <p class="govuk-body" style="margin: 1em 0 2em 0;">Use the filters to choose the data sets to see and download.</p>
+
           <form action="recognition-data-1-filtered-published" method="post" class="form">
 
             <div class="govuk-grid-row">
-              <div class="govuk-grid-column-one-third">
+              <div class="govuk-grid-column-one-quarter">
                 {{ govukInput({
                   label: {
                     text: "Keyword",
@@ -108,10 +111,80 @@
                 }) }}
               </div>
 
-              <div class="govuk-grid-column-one-third">
+              <div class="govuk-grid-column-one-quarter">
                 {{ govukCheckboxes({
-                  idPrefix: "profession-status",
-                  name: "profession-status",
+                  idPrefix: "decision-data-regulators",
+                  name: "decision-data-regulators",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Regulators",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "General Optical Council",
+                      text: "General Optical Council",
+                      checked: checked("decision-data-regulators", "General Optical Council")
+                    },
+                    {
+                      value: "Institute of Chartered Accountants in England and Wales",
+                      text: "Institute of Chartered Accountants in England and Wales",
+                      checked: checked("decision-data-regulators", "Institute of Chartered Accountants in England and Wales")
+                    },
+                    {
+                      value: "Institute of Chartered Accountants in Scotland",
+                      text: "Institute of Chartered Accountants in Scotland",
+                      checked: checked("decision-data-regulators", "Institute of Chartered Accountants in Scotland")
+                    }
+                  ]
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+                {{ govukCheckboxes({
+                  idPrefix: "decision-data-years",
+                  name: "decision-data-years",
+                  classes: "govuk-checkboxes--small rpr-internal-listing__filter",
+                  fieldset: {
+                    legend: {
+                      text: "Years",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: "Select all that apply."
+                  },
+                  items: [
+                    {
+                      value: "2019",
+                      text: "2019",
+                      checked: checked("decision-data-years", "2019")
+                    },
+                    {
+                      value: "2020",
+                      text: "2020",
+                      checked: checked("decision-data-years", "2020")
+                    },
+                    {
+                      value: "2021",
+                      text: "2021",
+                      checked: checked("decision-data-years", "2021")
+                    }
+                  ]
+                }) }}
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+                {{ govukCheckboxes({
+                  idPrefix: "decision-data-status",
+                  name: "decision-data-status",
                   classes: "govuk-checkboxes--small rpr-internal-listing__filter",
                   fieldset: {
                     legend: {
@@ -127,28 +200,29 @@
                     {
                       value: "Published",
                       text: "Published",
-                      checked: checked("profession-status", "Published")
+                      checked: checked("decision-data-status", "Published")
                     },
                     {
                       value: "Draft",
                       text: "Draft",
-                      checked: checked("profession-status", "Draft")
+                      checked: checked("decision-data-status", "Draft")
                     },
                     {
                       value: "Archived",
                       text: "Archived",
-                      checked: checked("profession-status", "Archived")
+                      checked: checked("decision-data-status", "Archived")
                     }
                   ]
                 }) }}
               </div>
 
-              <div class="govuk-grid-column-one-third">
-              </div>
             </div>
 
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-full">
+                <p class="govuk-body-m">
+                  <a class="govuk-link" href="recognition-data-1">Clear all filters</a><br>
+                </p>
                 {{ govukButton({
                   text: "Filter results",
                   classes: "govuk-button--secondary rpr-internal-listing__filter-button"
@@ -157,72 +231,58 @@
             </div>
 
           </form>
-        </div>
-      </details>
-
-
-
+        <!--/div-->
+      <!--/details-->
       </div>
 
-      <!--div class="govuk-!-padding-bottom-6"></div-->
     </div>
   </div>
 
   <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-full govuk-!-margin-top-6">
+    <div class="govuk-grid-column-full">
 
-      {% if data['profession-keyword'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['profession-keyword'] }}</strong></p>
-      {% endif %}
+      {% if data['profession-keyword'] or data['decision-data-regulators'] or data['decision-data-years'] or data['decision-data-status'] %}
+        <div class="rpr-listing__search-criteria">
 
-      {% if data['profession-nations'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Nations:</span> 
-        {% for nation in data['profession-nations'] %}
-          <strong class="govuk-tag">{{ nation }}</strong>
-        {% endfor %}
-        </p>
-      {% endif %}
+          {% if data['profession-keyword'] %}
+            <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Keywords:</span> <strong class="govuk-tag">{{ data['profession-keyword'] }}</strong></p>
+          {% endif %}
 
-      {% if data['profession-regulators'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Regulators:</span> 
-        {% for regulator in data['profession-regulators'] %}
-          <strong class="govuk-tag">{{ regulator }}</strong>
-        {% endfor %}
-        </p>
-      {% endif %}
-      
-      {% if data['profession-industries'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Sectors:</span> 
-        {% for industry in data['profession-industries'] %}
-          <strong class="govuk-tag">{{ industry }}</strong>
-        {% endfor %}
-        </p>
-      {% endif %}
+          {% if data['decision-data-regulators'] %}
+            <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Regulators:</span> 
+            {% for regulator in data['decision-data-regulators'] %}
+              <strong class="govuk-tag">{{ regulator }}</strong>
+            {% endfor %}
+            </p>
+          {% endif %}
+          
+          {% if data['decision-data-years'] %}
+            <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Years:</span> 
+            {% for year in data['decision-data-years'] %}
+              <strong class="govuk-tag">{{ year }}</strong>
+            {% endfor %}
+            </p>
+          {% endif %}
 
-      {% if data['profession-status'] %}
-        <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Status:</span> 
-        {% for status in data['profession-status'] %}
-          <strong class="govuk-tag">{{ status }}</strong>
-        {% endfor %}
-        </p>
-      {% endif %}
-
-      <div class="rpr-internal-listing__download-container govuk-inset-text">
-        <p class="govuk-body">You can download the decision data of the following professions and years in bulk:</p>
-        {{ govukButton({
-          text: "Download data"
-        }) }}
-      </div>
-
-
-      <div class="rpr-internal-listing__sort-container">
-        <div class="rpr-internal-listing__sort-container-left govuk-body">
-          <span class="govuk-!-font-size-36 govuk-!-font-weight-bold">6</span> data sets found.
+          {% if data['decision-data-status'] %}
+            <p class="rpr-listing__search-criteria-container"><span class="govuk-!-font-weight-bold">Status:</span> 
+            {% for status in data['decision-data-status'] %}
+              <strong class="govuk-tag">{{ status }}</strong>
+            {% endfor %}
+            </p>
+          {% endif %}
+          
         </div>
+      {% endif %}
+
+      <div class="rpr-internal__details-page-file-download-container">
+        <span class="govuk-body"><a href="#" class="govuk-link rpr-internal__details-page-file-download-link">Download data sets</a></span>
       </div>
 
       {{ govukTable({
+        caption: "6 data sets founds",
+        captionClasses: "govuk-table__caption--m",
         firstCellIsHeader: true,
         head: [
           {
