@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Recognition decision data - Chartered Accountant 
+{% endblock %}
+
+{% set bodyClasses = "" %}
+
+{% block beforeContent %}
+  {% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is a new service - your <a href="#" class="govuk-link">feedback</a> will help us to improve it.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Recognition decision data
+        <span class="govuk-caption-l">Chartered Accountant - United Kingdom</span>
+      </h1>
+
+      <h2 class="govuk-heading-l">2020</h2>
+
+      <h3 class="govuk-heading-m" id="regulator-1">Institute of Chartered Accountants in England and Wales</h3>
+      <table class="govuk-table rpr-decision-data__table-container">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header col1"></th>
+            <th scope="col" class="govuk-table__header" colspan="2">Accepted</th>
+            <th scope="col" class="govuk-table__header" colspan="2">Not accepted</th>
+            <th scope="col" class="govuk-table__header col6"><strong></strong></th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header col1">Routes</th>
+            <th scope="col" class="govuk-table__header col2">Qualifications recognised</th>
+            <th scope="col" class="govuk-table__header col3">Additional conditions met</th>
+            <th scope="col" class="govuk-table__header col4">Qualifications not recognised</th>
+            <th scope="col" class="govuk-table__header col5">Additional conditions not met</th>
+            <th scope="col" class="govuk-table__header col6"><strong>Total</strong></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell col1">EEA Route</td>
+            <td class="govuk-table__cell col2">6</td>
+            <td class="govuk-table__cell col3">2</td>
+            <td class="govuk-table__cell col4">1</td>
+            <td class="govuk-table__cell col5">0</td>
+            <td class="govuk-table__cell col6"><strong>9</strong></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell col1">International Route</td>
+            <td class="govuk-table__cell col2">4</td>
+            <td class="govuk-table__cell col3">2</td>
+            <td class="govuk-table__cell col4">1</td>
+            <td class="govuk-table__cell col5">4</td>
+            <td class="govuk-table__cell col6"><strong>11</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="govuk-heading-m" id="regulator-1">Institute of Chartered Accountants in England and Wales (alternative layout)</h3>
+      <table class="govuk-table rpr-decision-data__table-container">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header vertical-col1"></th>
+            <th scope="col" class="govuk-table__header vertical-col2">EEA route</th>
+            <th scope="col" class="govuk-table__header vertical-col3">International route</th>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Accepted - qualifications recognised</th>
+            <td class="govuk-table__cell col2">6</td>
+            <td class="govuk-table__cell col2">4</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Accepted - additional conditions met</th>
+            <td class="govuk-table__cell col2">2</td>
+            <td class="govuk-table__cell col2">2</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Not accepted - additional conditions not met</th>
+            <td class="govuk-table__cell col2">1</td>
+            <td class="govuk-table__cell col2">1</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Not Accepted – qualifications not recognised</th>
+            <td class="govuk-table__cell col2">0</td>
+            <td class="govuk-table__cell col2">4</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Total</th>
+            <td class="govuk-table__cell col2"><strong>9</strong></td>
+            <td class="govuk-table__cell col2"><strong>11</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+
+  </div>
+
+{% endblock %}

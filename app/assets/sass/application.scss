@@ -202,6 +202,30 @@ $tiny-screen: 340px;
 
 .rpr-decision-data__table-container {
   overflow-x: auto;
+  table-layout: fixed;
+
+  th, td {
+    border: 1px solid govuk-colour("mid-grey");
+    padding: 0.4em;
+  }
+
+  .col1 {
+    width: 12%;
+  }
+
+  .col2, .col3, .col4, .col5 {
+    width: 20%;
+  }
+
+  .col6 {
+    width: 8%;
+  }
+
+  .vertical-col1,
+  .vertical-col2,
+  .vertical-col3 {
+    width: 33%;
+  }
 }
 
 .rpr-decision-data__table-editing {
